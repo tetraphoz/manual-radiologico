@@ -22,42 +22,6 @@ Completion means the repository has a reviewed LaTeX source tree, a reproducible
 - [X] Conversion scripts use project-relative paths and no hard-coded credentials.
 - [ ] The final output has been proofread for Spanish accents, units, equations, tables, and figure references.
 
-* NEXT Immediate triage [7/8]
-
-- [X] Pick the canonical draft to refactor from: =curso_gpt.tex=, =curso.tex=, or =curso_proteccion_radiologica.tex=. Decision: use =tex/main.tex= as the canonical wrapper over the raw generated fragments; legacy drafts have been removed from the working tree (see Git history).
-- [X] Record a baseline build result for the chosen draft: command used, errors, warnings, output PDF name.
-- [X] Fix the current strict-build blocker around [[file:scratch/generated-pages/img-073.png.tex][scratch/generated-pages/img-073.png.tex]] malformed =enumerate= markup.
-- [X] Add a =.gitignore= for LaTeX artifacts, editor caches, build directories, and scratch outputs.
-- [X] Sanitize [[file:scripts/ocr_pages_openai.py][scripts/ocr_pages_openai.py]] before any reuse: remove the hard-coded credential, rotate/revoke it if real, and read API keys from the environment.
-- [X] Decide which files are original sources, reviewed sources, scratch/generated files, and archives.
-- [ ] Commit =readme.org= and =todo.org= as the first project-organization checkpoint.
-- [X] Create a short page-to-chapter map before moving content.
-
-* TODO Repository reorganization [10/10]
-
-Proposed target layout is documented in [[file:readme.org][readme.org]].
-
-- [X] Create =tex/=, =tex/chapters/=, =tex/frontmatter/=, =tex/appendices/=.
-- [X] Create =assets/figures/= and move included root-level PNG figures there.
-- [X] Create =source/= and move/copy original source material there: PDF, OCR text, page images.
-- [X] Create =scratch/generated-pages/= and move raw generated page fragments out of the final source path.
-- [X] Create =scripts/= for conversion/build helper scripts.
-- [X] Create =build/= or configure =latexmk= to place outputs there.
-- [X] Archive obsolete or alternative drafts after identifying what they contain.
-- [X] Remove LaTeX intermediates: =*.aux=, =*.log=, =*.fls=, =*.fdb_latexmk=, =*.synctex.gz= where safe.
-- [X] Remove/editor-ignore =.auctex-auto/= and =emacs-workspace-current-session=.
-- [X] Decide whether =latexpand=, =perl/=, and =perl.zip= are needed; archived in Git history and removed from the working tree.
-
-* TODO Build system [5/7]
-
-- [X] Add a =latexmkrc= with =build/= output directory and consistent options.
-- [X] Add a minimal =Makefile= or documented commands: =make pdf=, =make clean=.
-- [ ] Ensure =flake.nix= contains all build tools needed beyond TeX Live, if any.
-- [X] Use =-file-line-error= and eventually =-halt-on-error= for reliable diagnostics.
-- [X] Add =\graphicspath{{assets/figures/}}= to current draft preambles after moving figures.
-- [ ] Confirm builds work from a clean checkout, not just from existing generated files.
-- [X] Store final PDFs under =build/= or =dist/= instead of repository root.
-
 * TODO LaTeX source refactor [4/12]
 
 - [X] Create =tex/main.tex= as the only final document entry point.
@@ -85,14 +49,6 @@ Proposed target layout is documented in [[file:readme.org][readme.org]].
 - [ ] Check all emergency procedures keep the original order and numbering.
 - [ ] Remove any generated English headings or invented text from AI/OCR output.
 - [ ] Do a final PDF visual pass against the source manual.
-
-* TODO Security and provenance [3/5]
-
-- [X] Remove hard-coded secrets from scripts and history as appropriate.
-- [ ] If the old API credential was real, revoke/rotate it outside this repository.
-- [X] Document which files are original BYN sources versus generated conversion artifacts.
-- [ ] Verify permission/license before publishing the converted manual.
-- [X] Avoid committing API responses, local paths, editor sessions, or personal environment details.
 
 * Progress log
 
@@ -289,3 +245,46 @@ For each page:
 | 114 | [[file:scratch/generated-pages/img-114.png.tex][tex]] | [[file:source/pages/img-114.png][png]] | TODO |  |  |
 | 115 | [[file:scratch/generated-pages/img-115.png.tex][tex]] | [[file:source/pages/img-115.png][png]] | TODO |  |  |
 | 116 | [[file:scratch/generated-pages/img-116.png.tex][tex]] | [[file:source/pages/img-116.png][png]] | TODO |  |  |
+* Archive
+** DONE Improve first draft [8/8]
+
+- [X] Pick the canonical draft to refactor from: =curso_gpt.tex=, =curso.tex=, or =curso_proteccion_radiologica.tex=. Decision: use =tex/main.tex= as the canonical wrapper over the raw generated fragments; legacy drafts have been removed from the working tree (see Git history).
+- [X] Record a baseline build result for the chosen draft: command used, errors, warnings, output PDF name.
+- [X] Fix the current strict-build blocker around [[file:scratch/generated-pages/img-073.png.tex][scratch/generated-pages/img-073.png.tex]] malformed =enumerate= markup.
+- [X] Add a =.gitignore= for LaTeX artifacts, editor caches, build directories, and scratch outputs.
+- [X] Sanitize [[file:scripts/ocr_pages_openai.py][scripts/ocr_pages_openai.py]] before any reuse: remove the hard-coded credential, rotate/revoke it if real, and read API keys from the environment.
+- [X] Decide which files are original sources, reviewed sources, scratch/generated files, and archives.
+- [X] Commit =readme.org= and =todo.org= as the first project-organization checkpoint.
+- [X] Create a short page-to-chapter map before moving content.
+
+** DONE Repository reorganization [10/10]
+
+Proposed target layout is documented in [[file:readme.org][readme.org]].
+
+- [X] Create =tex/=, =tex/chapters/=, =tex/frontmatter/=, =tex/appendices/=.
+- [X] Create =assets/figures/= and move included root-level PNG figures there.
+- [X] Create =source/= and move/copy original source material there: PDF, OCR text, page images.
+- [X] Create =scratch/generated-pages/= and move raw generated page fragments out of the final source path.
+- [X] Create =scripts/= for conversion/build helper scripts.
+- [X] Create =build/= or configure =latexmk= to place outputs there.
+- [X] Archive obsolete or alternative drafts after identifying what they contain.
+- [X] Remove LaTeX intermediates: =*.aux=, =*.log=, =*.fls=, =*.fdb_latexmk=, =*.synctex.gz= where safe.
+- [X] Remove/editor-ignore =.auctex-auto/= and =emacs-workspace-current-session=.
+- [X] Decide whether =latexpand=, =perl/=, and =perl.zip= are needed; archived in Git history and removed from the working tree.
+
+** DONE Build system [7/7]
+
+- [X] Add a =latexmkrc= with =build/= output directory and consistent options.
+- [X] Add a minimal =Makefile= or documented commands: =make pdf=, =make clean=.
+- [X] Ensure =flake.nix= contains all build tools needed beyond TeX Live, if any.
+- [X] Use =-file-line-error= and eventually =-halt-on-error= for reliable diagnostics.
+- [X] Add =\graphicspath{{assets/figures/}}= to current draft preambles after moving figures.
+- [X] Confirm builds work from a clean checkout, not just from existing generated files.
+- [X] Store final PDFs under =build/= or =dist/= instead of repository root.
+** DONE Security and provenance [5/5]
+
+- [X] Remove hard-coded secrets from scripts and history as appropriate.
+- [X] If the old API credential was real, revoke/rotate it outside this repository.
+- [X] Document which files are original BYN sources versus generated conversion artifacts.
+- [X] Verify permission/license before publishing the converted manual.
+- [X] Avoid committing API responses, local paths, editor sessions, or personal environment details.
