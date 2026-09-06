@@ -1,0 +1,291 @@
+#+title: BYN Manual Conversion TODO
+#+date: 2026-09-06
+#+language: en
+#+startup: overview
+#+todo: TODO(t) NEXT(n) DOING(g) WAIT(w) REVIEW(r) | DONE(d) CANCELED(c)
+
+* Objective
+
+Convert [[file:source/byn.pdf][source/byn.pdf]] into a clean, maintainable LaTeX book project.
+
+Completion means the repository has a reviewed LaTeX source tree, a reproducible build, organized source/scratch/assets directories, and no credentials or generated build products treated as source.
+
+** Definition of done [3/9]
+
+- [X] A single canonical entry point exists, ideally =tex/main.tex=.
+- [ ] The PDF builds from a clean checkout with one documented command.
+- [ ] LaTeX source is split into reviewed chapter/appendix files.
+- [ ] All 116 source pages have been checked against the PDF/page images.
+- [ ] OCR/AI mistakes and hallucinated wording have been removed.
+- [ ] Figures are named clearly and stored under one assets directory.
+- [X] Build artifacts and editor caches are ignored or removed.
+- [X] Conversion scripts use project-relative paths and no hard-coded credentials.
+- [ ] The final output has been proofread for Spanish accents, units, equations, tables, and figure references.
+
+* NEXT Immediate triage [7/8]
+
+- [X] Pick the canonical draft to refactor from: =curso_gpt.tex=, =curso.tex=, or =curso_proteccion_radiologica.tex=. Decision: use =tex/main.tex= as the canonical wrapper over the raw generated fragments; legacy drafts have been removed from the working tree (see Git history).
+- [X] Record a baseline build result for the chosen draft: command used, errors, warnings, output PDF name.
+- [X] Fix the current strict-build blocker around [[file:scratch/generated-pages/img-073.png.tex][scratch/generated-pages/img-073.png.tex]] malformed =enumerate= markup.
+- [X] Add a =.gitignore= for LaTeX artifacts, editor caches, build directories, and scratch outputs.
+- [X] Sanitize [[file:scripts/ocr_pages_openai.py][scripts/ocr_pages_openai.py]] before any reuse: remove the hard-coded credential, rotate/revoke it if real, and read API keys from the environment.
+- [X] Decide which files are original sources, reviewed sources, scratch/generated files, and archives.
+- [ ] Commit =readme.org= and =todo.org= as the first project-organization checkpoint.
+- [X] Create a short page-to-chapter map before moving content.
+
+* TODO Repository reorganization [10/10]
+
+Proposed target layout is documented in [[file:readme.org][readme.org]].
+
+- [X] Create =tex/=, =tex/chapters/=, =tex/frontmatter/=, =tex/appendices/=.
+- [X] Create =assets/figures/= and move included root-level PNG figures there.
+- [X] Create =source/= and move/copy original source material there: PDF, OCR text, page images.
+- [X] Create =scratch/generated-pages/= and move raw generated page fragments out of the final source path.
+- [X] Create =scripts/= for conversion/build helper scripts.
+- [X] Create =build/= or configure =latexmk= to place outputs there.
+- [X] Archive obsolete or alternative drafts after identifying what they contain.
+- [X] Remove LaTeX intermediates: =*.aux=, =*.log=, =*.fls=, =*.fdb_latexmk=, =*.synctex.gz= where safe.
+- [X] Remove/editor-ignore =.auctex-auto/= and =emacs-workspace-current-session=.
+- [X] Decide whether =latexpand=, =perl/=, and =perl.zip= are needed; archived in Git history and removed from the working tree.
+
+* TODO Build system [5/7]
+
+- [X] Add a =latexmkrc= with =build/= output directory and consistent options.
+- [X] Add a minimal =Makefile= or documented commands: =make pdf=, =make clean=.
+- [ ] Ensure =flake.nix= contains all build tools needed beyond TeX Live, if any.
+- [X] Use =-file-line-error= and eventually =-halt-on-error= for reliable diagnostics.
+- [X] Add =\graphicspath{{assets/figures/}}= to current draft preambles after moving figures.
+- [ ] Confirm builds work from a clean checkout, not just from existing generated files.
+- [X] Store final PDFs under =build/= or =dist/= instead of repository root.
+
+* TODO LaTeX source refactor [4/12]
+
+- [X] Create =tex/main.tex= as the only final document entry point.
+- [X] Create =tex/preamble.tex= for packages, styles, colors, list settings, and macros.
+- [X] Normalize the document class and options, e.g. =book=, =oneside= if needed.
+- [X] Confirm required packages: =babel= Spanish, =graphicx=, =amsmath=, =enumitem=, =float=, =wrapfig=, =mhchem= if chemical notation is used.
+- [ ] Remove duplicate/conflicting preamble settings from old drafts.
+- [ ] Split front matter/objectives/program into =tex/frontmatter/=.
+- [ ] Split main content into chapter files under =tex/chapters/=.
+- [ ] Split practices/appendices into =tex/appendices/= if appropriate.
+- [ ] Normalize section hierarchy: =\chapter=, =\section=, =\subsection=, =\subsubsection=.
+- [ ] Replace formatting-only headings with semantic section commands.
+- [ ] Standardize lists/tables/figures and captions.
+- [ ] Add labels/cross-references where the manual refers to practices, figures, tables, or numbered procedures.
+
+* TODO Content review and proofreading [0/10]
+
+- [ ] Compare every reviewed section against [[file:source/byn.pdf][source/byn.pdf]] or page images.
+- [ ] Use [[file:source/byn.txt][source/byn.txt]] only as secondary OCR reference.
+- [ ] Correct Spanish accents and spelling consistently.
+- [ ] Check technical terms: radiación, radiografía, dosímetro, blindaje, fuente, exposición, dosis.
+- [ ] Check units and symbols: Ci, Bq, R, rad, rem, Gy, Sv, mR/h, etc.
+- [ ] Check math formulas and numerical examples.
+- [ ] Check all tables for row/column completeness.
+- [ ] Check all emergency procedures keep the original order and numbering.
+- [ ] Remove any generated English headings or invented text from AI/OCR output.
+- [ ] Do a final PDF visual pass against the source manual.
+
+* TODO Security and provenance [3/5]
+
+- [X] Remove hard-coded secrets from scripts and history as appropriate.
+- [ ] If the old API credential was real, revoke/rotate it outside this repository.
+- [X] Document which files are original BYN sources versus generated conversion artifacts.
+- [ ] Verify permission/license before publishing the converted manual.
+- [X] Avoid committing API responses, local paths, editor sessions, or personal environment details.
+
+* Progress log
+
+** 2026-09-06 Asset cleanup
+
+- Moved manual figure assets from the repository root into [[file:assets/figures/][assets/figures/]].
+- Renamed =tablaEfectos.png_= to [[file:assets/figures/tablaEfectos-alt.png][assets/figures/tablaEfectos-alt.png]] to avoid a confusing pseudo-extension.
+- Moved old screenshot captures into [[file:assets/screenshots/][assets/screenshots/]] (later deleted to keep only manual figure assets).
+- Added explicit =\usepackage{graphicx}= and =\graphicspath{{assets/figures/}}= to the current draft preambles now archived under =scratch/legacy-drafts/=.
+- Verified that =latexmk -pdf -file-line-error -interaction=nonstopmode curso_proteccion_radiologica.tex= still found the moved figures before archiving the draft.
+
+** 2026-09-06 Ignore-file cleanup
+
+- Added [[file:.gitignore][.gitignore]] for LaTeX auxiliary files, root generated draft PDFs, build/dist outputs, editor caches, and Python cache files.
+
+** 2026-09-06 Project structure pass
+
+- Moved original PDF/OCR material into [[file:source/][source/]].
+- Moved 116 page images into [[file:source/pages/][source/pages/]].
+- Moved 116 raw generated page fragments into [[file:scratch/generated-pages/][scratch/generated-pages/]].
+- Created [[file:scratch/ocr-input/][scratch/ocr-input/]] as the optional OCR/regeneration queue.
+- Created the final-source skeleton: [[file:tex/][tex/]], [[file:tex/frontmatter/][tex/frontmatter/]], [[file:tex/chapters/][tex/chapters/]], and [[file:tex/appendices/][tex/appendices/]].
+- Created [[file:scripts/][scripts/]] and rewrote the OCR helper as [[file:scripts/ocr_pages_openai.py][scripts/ocr_pages_openai.py]].
+- Removed generated LaTeX/editor intermediates from the working tree.
+
+** 2026-09-06 Build-system pass
+
+- Added [[file:latexmkrc][latexmkrc]] so builds use =build/=, =-file-line-error=, =-halt-on-error=, and =nonstopmode= consistently.
+- Added [[file:Makefile][Makefile]] with =make pdf=, =make clean=, and =make cleanall=.
+- Added [[file:tex/main.tex][tex/main.tex]] and [[file:tex/preamble.tex][tex/preamble.tex]] as the canonical build entry point and shared preamble.
+- Verified =make pdf= builds [[file:build/main.pdf][build/main.pdf]]. Current output is still a raw fragment build and has expected warnings from unreviewed fragments.
+- Verified =make curated= builds [[file:build/curso_proteccion_radiologica.pdf][build/curso_proteccion_radiologica.pdf]].
+- Fixed the malformed =enumerate= blocker in [[file:scratch/generated-pages/img-073.png.tex][scratch/generated-pages/img-073.png.tex]] so strict builds complete.
+
+** 2026-09-06 Legacy archive pass
+
+- Moved old root-level drafts into [[file:scratch/legacy-drafts/][scratch/legacy-drafts/]].
+- Moved =latexpand=, =perl/=, and =perl.zip= into [[file:tools/legacy/][tools/legacy/]] instead of deleting them.
+- Updated [[file:Makefile][Makefile]] so =make raw= and =make curated= build from the archived legacy paths.
+- Verified =make pdf=, =make raw=, and =make curated= still build after the archive move.
+
+** 2026-09-06 Build cruft confinement
+
+- Ran =make all= and confirmed =*.aux=, =*.log=, =*.fls=, =*.fdb_latexmk=, and generated draft PDFs are written under [[file:build/][build/]].
+- Confirmed no LaTeX build artifacts or generated draft PDFs remain outside =build/=, excluding the original source PDF at [[file:source/byn.pdf][source/byn.pdf]].
+
+** 2026-09-06 Legacy deletion pass
+
+- Removed archived legacy drafts under [[file:scratch/legacy-drafts/][scratch/legacy-drafts/]] from the working tree.
+- Removed archived helper tools under [[file:tools/legacy/][tools/legacy/]] from the working tree.
+- Deleted old screenshot captures in [[file:assets/screenshots/][assets/screenshots/]].
+- Deleted stale legacy build PDFs: [[file:build/curso_gpt.pdf][build/curso_gpt.pdf]] and [[file:build/curso_proteccion_radiologica.pdf][build/curso_proteccion_radiologica.pdf]]. Retained the canonical [[file:build/main.pdf][build/main.pdf]].
+
+* Page/range plan
+
+Use this range map as a starting point; refine it after checking the PDF table of contents and the actual page images.
+
+| Pages | Likely target | Status | Notes |
+|-------+---------------+--------+-------|
+| 001-008 | Front matter, objectives, program, high-level topics | TODO | First pages include course title/objectives/program. |
+| 009-018 | Basic radiation concepts, interaction with matter, biological effects | TODO | Needs exact chapter boundaries. |
+| 019-030 | Measurement, instruments, exposure/dose calculations, protection basics | TODO | Contains equations and examples; verify units carefully. |
+| 031-042 | Industrial radiography equipment, operating instructions, regulations | TODO | Contains several equipment/operations figures. |
+| 043-060 | Responsibilities, safety organization, accidents/procedures | TODO | Check official role names and procedure numbering. |
+| 061-095 | Emergency plan and emergency case procedures | TODO | Preserve classifications and step numbering exactly. |
+| 096-116 | Practices, exercises, recovery procedures, appendices | TODO | Likely appendix/practice material. |
+
+* Page audit tracker
+
+Status values: =TODO=, =DOING=, =REVIEW=, =DONE=.
+
+For each page:
+
+- compare the generated fragment against the page image/PDF;
+- integrate corrected content into the target chapter/appendix file;
+- build and fix any LaTeX errors;
+- update the =Status=, =Target=, and =Notes= columns.
+
+| Page | Fragment | Image | Status | Target | Notes |
+|------+----------+-------+--------+--------+-------|
+| 001 | [[file:scratch/generated-pages/img-001.png.tex][tex]] | [[file:source/pages/img-001.png][png]] | TODO |  |  |
+| 002 | [[file:scratch/generated-pages/img-002.png.tex][tex]] | [[file:source/pages/img-002.png][png]] | TODO |  |  |
+| 003 | [[file:scratch/generated-pages/img-003.png.tex][tex]] | [[file:source/pages/img-003.png][png]] | TODO |  |  |
+| 004 | [[file:scratch/generated-pages/img-004.png.tex][tex]] | [[file:source/pages/img-004.png][png]] | TODO |  |  |
+| 005 | [[file:scratch/generated-pages/img-005.png.tex][tex]] | [[file:source/pages/img-005.png][png]] | TODO |  |  |
+| 006 | [[file:scratch/generated-pages/img-006.png.tex][tex]] | [[file:source/pages/img-006.png][png]] | TODO |  |  |
+| 007 | [[file:scratch/generated-pages/img-007.png.tex][tex]] | [[file:source/pages/img-007.png][png]] | TODO |  |  |
+| 008 | [[file:scratch/generated-pages/img-008.png.tex][tex]] | [[file:source/pages/img-008.png][png]] | TODO |  |  |
+| 009 | [[file:scratch/generated-pages/img-009.png.tex][tex]] | [[file:source/pages/img-009.png][png]] | TODO |  |  |
+| 010 | [[file:scratch/generated-pages/img-010.png.tex][tex]] | [[file:source/pages/img-010.png][png]] | TODO |  |  |
+| 011 | [[file:scratch/generated-pages/img-011.png.tex][tex]] | [[file:source/pages/img-011.png][png]] | TODO |  |  |
+| 012 | [[file:scratch/generated-pages/img-012.png.tex][tex]] | [[file:source/pages/img-012.png][png]] | TODO |  |  |
+| 013 | [[file:scratch/generated-pages/img-013.png.tex][tex]] | [[file:source/pages/img-013.png][png]] | TODO |  |  |
+| 014 | [[file:scratch/generated-pages/img-014.png.tex][tex]] | [[file:source/pages/img-014.png][png]] | TODO |  |  |
+| 015 | [[file:scratch/generated-pages/img-015.png.tex][tex]] | [[file:source/pages/img-015.png][png]] | TODO |  |  |
+| 016 | [[file:scratch/generated-pages/img-016.png.tex][tex]] | [[file:source/pages/img-016.png][png]] | TODO |  |  |
+| 017 | [[file:scratch/generated-pages/img-017.png.tex][tex]] | [[file:source/pages/img-017.png][png]] | TODO |  |  |
+| 018 | [[file:scratch/generated-pages/img-018.png.tex][tex]] | [[file:source/pages/img-018.png][png]] | TODO |  |  |
+| 019 | [[file:scratch/generated-pages/img-019.png.tex][tex]] | [[file:source/pages/img-019.png][png]] | TODO |  |  |
+| 020 | [[file:scratch/generated-pages/img-020.png.tex][tex]] | [[file:source/pages/img-020.png][png]] | TODO |  |  |
+| 021 | [[file:scratch/generated-pages/img-021.png.tex][tex]] | [[file:source/pages/img-021.png][png]] | TODO |  |  |
+| 022 | [[file:scratch/generated-pages/img-022.png.tex][tex]] | [[file:source/pages/img-022.png][png]] | TODO |  |  |
+| 023 | [[file:scratch/generated-pages/img-023.png.tex][tex]] | [[file:source/pages/img-023.png][png]] | TODO |  |  |
+| 024 | [[file:scratch/generated-pages/img-024.png.tex][tex]] | [[file:source/pages/img-024.png][png]] | TODO |  |  |
+| 025 | [[file:scratch/generated-pages/img-025.png.tex][tex]] | [[file:source/pages/img-025.png][png]] | TODO |  |  |
+| 026 | [[file:scratch/generated-pages/img-026.png.tex][tex]] | [[file:source/pages/img-026.png][png]] | TODO |  |  |
+| 027 | [[file:scratch/generated-pages/img-027.png.tex][tex]] | [[file:source/pages/img-027.png][png]] | TODO |  |  |
+| 028 | [[file:scratch/generated-pages/img-028.png.tex][tex]] | [[file:source/pages/img-028.png][png]] | TODO |  |  |
+| 029 | [[file:scratch/generated-pages/img-029.png.tex][tex]] | [[file:source/pages/img-029.png][png]] | TODO |  |  |
+| 030 | [[file:scratch/generated-pages/img-030.png.tex][tex]] | [[file:source/pages/img-030.png][png]] | TODO |  |  |
+| 031 | [[file:scratch/generated-pages/img-031.png.tex][tex]] | [[file:source/pages/img-031.png][png]] | TODO |  |  |
+| 032 | [[file:scratch/generated-pages/img-032.png.tex][tex]] | [[file:source/pages/img-032.png][png]] | TODO |  |  |
+| 033 | [[file:scratch/generated-pages/img-033.png.tex][tex]] | [[file:source/pages/img-033.png][png]] | TODO |  |  |
+| 034 | [[file:scratch/generated-pages/img-034.png.tex][tex]] | [[file:source/pages/img-034.png][png]] | TODO |  |  |
+| 035 | [[file:scratch/generated-pages/img-035.png.tex][tex]] | [[file:source/pages/img-035.png][png]] | TODO |  |  |
+| 036 | [[file:scratch/generated-pages/img-036.png.tex][tex]] | [[file:source/pages/img-036.png][png]] | TODO |  |  |
+| 037 | [[file:scratch/generated-pages/img-037.png.tex][tex]] | [[file:source/pages/img-037.png][png]] | TODO |  |  |
+| 038 | [[file:scratch/generated-pages/img-038.png.tex][tex]] | [[file:source/pages/img-038.png][png]] | TODO |  |  |
+| 039 | [[file:scratch/generated-pages/img-039.png.tex][tex]] | [[file:source/pages/img-039.png][png]] | TODO |  |  |
+| 040 | [[file:scratch/generated-pages/img-040.png.tex][tex]] | [[file:source/pages/img-040.png][png]] | TODO |  |  |
+| 041 | [[file:scratch/generated-pages/img-041.png.tex][tex]] | [[file:source/pages/img-041.png][png]] | TODO |  |  |
+| 042 | [[file:scratch/generated-pages/img-042.png.tex][tex]] | [[file:source/pages/img-042.png][png]] | TODO |  |  |
+| 043 | [[file:scratch/generated-pages/img-043.png.tex][tex]] | [[file:source/pages/img-043.png][png]] | TODO |  |  |
+| 044 | [[file:scratch/generated-pages/img-044.png.tex][tex]] | [[file:source/pages/img-044.png][png]] | TODO |  |  |
+| 045 | [[file:scratch/generated-pages/img-045.png.tex][tex]] | [[file:source/pages/img-045.png][png]] | TODO |  |  |
+| 046 | [[file:scratch/generated-pages/img-046.png.tex][tex]] | [[file:source/pages/img-046.png][png]] | TODO |  |  |
+| 047 | [[file:scratch/generated-pages/img-047.png.tex][tex]] | [[file:source/pages/img-047.png][png]] | TODO |  |  |
+| 048 | [[file:scratch/generated-pages/img-048.png.tex][tex]] | [[file:source/pages/img-048.png][png]] | TODO |  |  |
+| 049 | [[file:scratch/generated-pages/img-049.png.tex][tex]] | [[file:source/pages/img-049.png][png]] | TODO |  |  |
+| 050 | [[file:scratch/generated-pages/img-050.png.tex][tex]] | [[file:source/pages/img-050.png][png]] | TODO |  |  |
+| 051 | [[file:scratch/generated-pages/img-051.png.tex][tex]] | [[file:source/pages/img-051.png][png]] | TODO |  |  |
+| 052 | [[file:scratch/generated-pages/img-052.png.tex][tex]] | [[file:source/pages/img-052.png][png]] | TODO |  |  |
+| 053 | [[file:scratch/generated-pages/img-053.png.tex][tex]] | [[file:source/pages/img-053.png][png]] | TODO |  |  |
+| 054 | [[file:scratch/generated-pages/img-054.png.tex][tex]] | [[file:source/pages/img-054.png][png]] | TODO |  |  |
+| 055 | [[file:scratch/generated-pages/img-055.png.tex][tex]] | [[file:source/pages/img-055.png][png]] | TODO |  |  |
+| 056 | [[file:scratch/generated-pages/img-056.png.tex][tex]] | [[file:source/pages/img-056.png][png]] | TODO |  |  |
+| 057 | [[file:scratch/generated-pages/img-057.png.tex][tex]] | [[file:source/pages/img-057.png][png]] | TODO |  |  |
+| 058 | [[file:scratch/generated-pages/img-058.png.tex][tex]] | [[file:source/pages/img-058.png][png]] | TODO |  |  |
+| 059 | [[file:scratch/generated-pages/img-059.png.tex][tex]] | [[file:source/pages/img-059.png][png]] | TODO |  |  |
+| 060 | [[file:scratch/generated-pages/img-060.png.tex][tex]] | [[file:source/pages/img-060.png][png]] | TODO |  |  |
+| 061 | [[file:scratch/generated-pages/img-061.png.tex][tex]] | [[file:source/pages/img-061.png][png]] | TODO |  |  |
+| 062 | [[file:scratch/generated-pages/img-062.png.tex][tex]] | [[file:source/pages/img-062.png][png]] | TODO |  |  |
+| 063 | [[file:scratch/generated-pages/img-063.png.tex][tex]] | [[file:source/pages/img-063.png][png]] | TODO |  |  |
+| 064 | [[file:scratch/generated-pages/img-064.png.tex][tex]] | [[file:source/pages/img-064.png][png]] | TODO |  |  |
+| 065 | [[file:scratch/generated-pages/img-065.png.tex][tex]] | [[file:source/pages/img-065.png][png]] | TODO |  |  |
+| 066 | [[file:scratch/generated-pages/img-066.png.tex][tex]] | [[file:source/pages/img-066.png][png]] | TODO |  |  |
+| 067 | [[file:scratch/generated-pages/img-067.png.tex][tex]] | [[file:source/pages/img-067.png][png]] | TODO |  |  |
+| 068 | [[file:scratch/generated-pages/img-068.png.tex][tex]] | [[file:source/pages/img-068.png][png]] | TODO |  |  |
+| 069 | [[file:scratch/generated-pages/img-069.png.tex][tex]] | [[file:source/pages/img-069.png][png]] | TODO |  |  |
+| 070 | [[file:scratch/generated-pages/img-070.png.tex][tex]] | [[file:source/pages/img-070.png][png]] | TODO |  |  |
+| 071 | [[file:scratch/generated-pages/img-071.png.tex][tex]] | [[file:source/pages/img-071.png][png]] | TODO |  |  |
+| 072 | [[file:scratch/generated-pages/img-072.png.tex][tex]] | [[file:source/pages/img-072.png][png]] | TODO |  |  |
+| 073 | [[file:scratch/generated-pages/img-073.png.tex][tex]] | [[file:source/pages/img-073.png][png]] | TODO |  |  |
+| 074 | [[file:scratch/generated-pages/img-074.png.tex][tex]] | [[file:source/pages/img-074.png][png]] | TODO |  |  |
+| 075 | [[file:scratch/generated-pages/img-075.png.tex][tex]] | [[file:source/pages/img-075.png][png]] | TODO |  |  |
+| 076 | [[file:scratch/generated-pages/img-076.png.tex][tex]] | [[file:source/pages/img-076.png][png]] | TODO |  |  |
+| 077 | [[file:scratch/generated-pages/img-077.png.tex][tex]] | [[file:source/pages/img-077.png][png]] | TODO |  |  |
+| 078 | [[file:scratch/generated-pages/img-078.png.tex][tex]] | [[file:source/pages/img-078.png][png]] | TODO |  |  |
+| 079 | [[file:scratch/generated-pages/img-079.png.tex][tex]] | [[file:source/pages/img-079.png][png]] | TODO |  |  |
+| 080 | [[file:scratch/generated-pages/img-080.png.tex][tex]] | [[file:source/pages/img-080.png][png]] | TODO |  |  |
+| 081 | [[file:scratch/generated-pages/img-081.png.tex][tex]] | [[file:source/pages/img-081.png][png]] | TODO |  |  |
+| 082 | [[file:scratch/generated-pages/img-082.png.tex][tex]] | [[file:source/pages/img-082.png][png]] | TODO |  |  |
+| 083 | [[file:scratch/generated-pages/img-083.png.tex][tex]] | [[file:source/pages/img-083.png][png]] | TODO |  |  |
+| 084 | [[file:scratch/generated-pages/img-084.png.tex][tex]] | [[file:source/pages/img-084.png][png]] | TODO |  |  |
+| 085 | [[file:scratch/generated-pages/img-085.png.tex][tex]] | [[file:source/pages/img-085.png][png]] | TODO |  |  |
+| 086 | [[file:scratch/generated-pages/img-086.png.tex][tex]] | [[file:source/pages/img-086.png][png]] | TODO |  |  |
+| 087 | [[file:scratch/generated-pages/img-087.png.tex][tex]] | [[file:source/pages/img-087.png][png]] | TODO |  |  |
+| 088 | [[file:scratch/generated-pages/img-088.png.tex][tex]] | [[file:source/pages/img-088.png][png]] | TODO |  |  |
+| 089 | [[file:scratch/generated-pages/img-089.png.tex][tex]] | [[file:source/pages/img-089.png][png]] | TODO |  |  |
+| 090 | [[file:scratch/generated-pages/img-090.png.tex][tex]] | [[file:source/pages/img-090.png][png]] | TODO |  |  |
+| 091 | [[file:scratch/generated-pages/img-091.png.tex][tex]] | [[file:source/pages/img-091.png][png]] | TODO |  |  |
+| 092 | [[file:scratch/generated-pages/img-092.png.tex][tex]] | [[file:source/pages/img-092.png][png]] | TODO |  |  |
+| 093 | [[file:scratch/generated-pages/img-093.png.tex][tex]] | [[file:source/pages/img-093.png][png]] | TODO |  |  |
+| 094 | [[file:scratch/generated-pages/img-094.png.tex][tex]] | [[file:source/pages/img-094.png][png]] | TODO |  |  |
+| 095 | [[file:scratch/generated-pages/img-095.png.tex][tex]] | [[file:source/pages/img-095.png][png]] | TODO |  |  |
+| 096 | [[file:scratch/generated-pages/img-096.png.tex][tex]] | [[file:source/pages/img-096.png][png]] | TODO |  |  |
+| 097 | [[file:scratch/generated-pages/img-097.png.tex][tex]] | [[file:source/pages/img-097.png][png]] | TODO |  |  |
+| 098 | [[file:scratch/generated-pages/img-098.png.tex][tex]] | [[file:source/pages/img-098.png][png]] | TODO |  |  |
+| 099 | [[file:scratch/generated-pages/img-099.png.tex][tex]] | [[file:source/pages/img-099.png][png]] | TODO |  |  |
+| 100 | [[file:scratch/generated-pages/img-100.png.tex][tex]] | [[file:source/pages/img-100.png][png]] | TODO |  |  |
+| 101 | [[file:scratch/generated-pages/img-101.png.tex][tex]] | [[file:source/pages/img-101.png][png]] | TODO |  |  |
+| 102 | [[file:scratch/generated-pages/img-102.png.tex][tex]] | [[file:source/pages/img-102.png][png]] | TODO |  |  |
+| 103 | [[file:scratch/generated-pages/img-103.png.tex][tex]] | [[file:source/pages/img-103.png][png]] | TODO |  |  |
+| 104 | [[file:scratch/generated-pages/img-104.png.tex][tex]] | [[file:source/pages/img-104.png][png]] | TODO |  |  |
+| 105 | [[file:scratch/generated-pages/img-105.png.tex][tex]] | [[file:source/pages/img-105.png][png]] | TODO |  |  |
+| 106 | [[file:scratch/generated-pages/img-106.png.tex][tex]] | [[file:source/pages/img-106.png][png]] | TODO |  |  |
+| 107 | [[file:scratch/generated-pages/img-107.png.tex][tex]] | [[file:source/pages/img-107.png][png]] | TODO |  |  |
+| 108 | [[file:scratch/generated-pages/img-108.png.tex][tex]] | [[file:source/pages/img-108.png][png]] | TODO |  |  |
+| 109 | [[file:scratch/generated-pages/img-109.png.tex][tex]] | [[file:source/pages/img-109.png][png]] | TODO |  |  |
+| 110 | [[file:scratch/generated-pages/img-110.png.tex][tex]] | [[file:source/pages/img-110.png][png]] | TODO |  |  |
+| 111 | [[file:scratch/generated-pages/img-111.png.tex][tex]] | [[file:source/pages/img-111.png][png]] | TODO |  |  |
+| 112 | [[file:scratch/generated-pages/img-112.png.tex][tex]] | [[file:source/pages/img-112.png][png]] | TODO |  |  |
+| 113 | [[file:scratch/generated-pages/img-113.png.tex][tex]] | [[file:source/pages/img-113.png][png]] | TODO |  |  |
+| 114 | [[file:scratch/generated-pages/img-114.png.tex][tex]] | [[file:source/pages/img-114.png][png]] | TODO |  |  |
+| 115 | [[file:scratch/generated-pages/img-115.png.tex][tex]] | [[file:source/pages/img-115.png][png]] | TODO |  |  |
+| 116 | [[file:scratch/generated-pages/img-116.png.tex][tex]] | [[file:source/pages/img-116.png][png]] | TODO |  |  |

@@ -1,0 +1,24 @@
+\section*{Organización y Responsabilidad del Departamento de Seguridad Radiológica}
+
+Dado que la Seguridad Radiológica es un sistema de prácticas y criterios que involucran todas las actividades que se realizan con material radiactivo, las responsabilidades deben ser compartidas por todo el personal técnico y supervisor. El Departamento de Seguridad Radiológica es el encargado de vigilar que las indicaciones dadas por este manual se estén llevando a cabo tal y como se especifican.
+
+\subsection*{Organigrama}
+
+Una vista parcial del organigrama de nuestra empresa mostrando el lugar que ocupa el Departamento de Seguridad Radiológica se presenta en la siguiente figura:
+
+\begin{center}
+\begin{tikzpicture}
+\node (DG) at (0,0) [rectangle, draw] {DIRECTOR GENERAL};
+\node (JDR) [below=of DG, rectangle, draw] {JEFE DEL DEP'TO DE SEGURIDAD RADIOLOGICA};
+\node (ADRS) [below=of JDR, rectangle, draw] {AUXILIAR DEL DEP'TO DE SEGURIDAD RADIOLOGICA};
+\node (TR) [below=of ADRS, rectangle, draw, xshift=-2cm] {TECNICO RADIOLOGO};
+\node (AR) [right=of TR, rectangle, draw] {AUXILIAR DEL RADIOLOGO};
+
+\draw[-] (DG) -- (JDR);
+\draw[-] (JDR) -- (ADRS);
+\draw[-] (ADRS) -- (TR);
+\draw[-] (ADRS) -- (AR);
+\end{tikzpicture}
+\end{center}
+
+\textit{Nota:} Este diagrama es sólo una representación parcial y simplificada del organigrama real dentro del departamento para efectos ilustrativos en este manual.

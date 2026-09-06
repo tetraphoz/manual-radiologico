@@ -1,0 +1,57 @@
+% Continuación del texto del manual de seguridad radiológica. Estas son las ecuaciones y tablas
+% relacionadas con el cálculo de la actividad de una fuente radiactiva.
+
+Para el cálculo de la actividad de una fuente se pueden usar 3 métodos:
+
+% Método analítico usando la ley de decaimiento exponencial
+\textbf{Método analítico.} Se realiza utilizando la siguiente fórmula:
+\[
+A = A_0 e^{-\lambda t}
+\]
+donde:
+\begin{itemize}
+    \item $A$ es la actividad al tiempo $t$
+    \item $A_0$ es la actividad original al tiempo $T=0$
+    \item $\lambda = \frac{ln(2)}{T_{1/2}} = 0.0693$ (constante de desintegración, obtenida con la vida media $T_{1/2} = 74$ días)
+    \item $t$ es el tiempo transcurrido desde que se midió o calculó la actividad original hasta el momento en que se desea calcular la nueva actividad.
+\end{itemize}
+
+Supongamos que deseamos calcular la actividad que tendrá el 20 de Marzo de 1995 una fuente de Ir-192 que se adquirió el 22 de Noviembre de 1994 con 110 Ci. 
+\[
+\text{Días transcurridos: } 8 + 31 + 31 + 29 + 20 = 119 \text{ días.}
+\]
+\[
+A = 110 e^{-0.0693 \cdot 119} \approx 36.43 \text{ Ci}
+\]
+
+% Método tabular, que utiliza una tabla precalculada de factores de decaimiento.
+\textbf{Método tabular.} Consiste en encontrar el número de días transcurridos desde la fecha de calibración de la fuente hasta la actual y buscar en la tabla (la cual es específica para cada isótopo) el factor que corresponde. Luego se multiplica por la actividad inicial y se obtiene el resultado.
+
+% Ejemplo de cálculo usando el método tabular.
+Por ejemplo: Calcular la actividad actual de una fuente con una actividad inicial de 106 Ci., habiendo transcurrido 156 días hasta la fecha de hoy.
+
+% Tabla de decaimiento para Ir-192
+\textbf{TABLA DE DECAIMIENTO PARA Ir-192}
+
+\begin{center}
+\begin{tabular}{|c|c||c|c||c|c|}
+\hline
+\textbf{DÍAS} & \textbf{FACTOR} & \textbf{DÍAS} & \textbf{FACTOR} & \textbf{DÍAS} & \textbf{FACTOR} \\
+\hline
+25 & 0.79 & 200 & 0.15 & 375 & 0.030 \\
+50 & 0.63 & 225 & 0.12 & 400 & 0.024 \\
+75 & 0.50 & 250 & 0.096 & 425 & 0.019 \\
+100 & 0.39 & 275 & 0.076 & 450 & 0.015 \\
+125 & 0.31 & 300 & 0.060 & 475 & 0.012 \\
+150 & 0.25 & 325 & 0.048 & 500 & 0.009 \\
+175 & 0.19 & 350 & 0.038 & 525 & 0.007 \\
+\hline
+\end{tabular}
+
+\[
+\text{Actividad estimada: } 106 \cdot 0.25 = 26.5 \text{ Ci}
+\]
+
+\end{center}
+
+% Fin de la sección incluida en el documento principal.

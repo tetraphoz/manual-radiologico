@@ -1,0 +1,37 @@
+# LaTeX build products
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# Generated draft PDFs in the repository root; keep source PDFs such as source/byn.pdf trackable.
+/curso.pdf
+/curso_gpt.pdf
+/curso_proteccion_radiologica.pdf
+
+# Build/output directories
+/build/
+/dist/
+
+# Editor/cache files
+.auctex-auto/
+emacs-workspace-current-session
+*~
+.#*
+
+# Python cache
+__pycache__/
+*.py[cod]

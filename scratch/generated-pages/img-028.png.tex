@@ -1,0 +1,59 @@
+% Describing radiation shielding effect with lead
+
+A un metro la Fuente nos dará: $53.5 \times 0.55 = 29.425 \, \text{R/h}$
+
+Sabemos que $0.2"$ de Plomo reduce a la mitad el nivel de Radiación:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{ESPESOR} & \textbf{NIVEL RAD.} \\
+\hline
+0 & 29425 \, \text{mR/h} \\
+0.2" & 14712.5 \, \text{mR/h} \\
+0.4" & 7356.25 \, \text{mR/h} \\
+0.6" & 3678.13 \, \text{mR/h} \\
+0.8" & 1839.1 \, \text{mR/h} \\
+1.0" & 919.5 \, \text{mR/h} \\
+1.2" & 459.77 \, \text{mR/h} \\
+1.4" & 229.88 \, \text{mR/h} \\
+1.6" & 114.94 \, \text{mR/h} \\
+1.8" & 57.47 \, \text{mR/h} \\
+\hline
+\end{tabular}
+\caption{Reducción de la radiación con diferentes espesores de plomo}
+\end{table}
+
+% Applying inverse square law for radiation level calculation
+
+¿Qué nivel de Radiación nos dará a 3 metros una fuente de Ir-192 de 85 Ci?
+
+A un metro tendríamos: $0.55 \times 85 = 46.75 \, \text{R/h}$
+
+Aplicando la Ley de Cuadrado Inverso:
+
+\textbf{DATOS:}
+\[
+I_1 = 46.75 \, \text{R/h}
+\]
+\[
+d_1 = 1 \, \text{m}
+\]
+\[
+d_2 = 3 \, \text{m}
+\]
+
+\textbf{FÓRMULA:}
+\[
+I_2 = \left(\frac{d_1}{d_2}\right)^2 \times I_1 = \left(\frac{1}{3}\right)^2 \times 46.75 = 5.19 \, \text{R/h}
+\]
+
+% Scenario of a worker handling a radioactive source
+
+A un trabajador se le cae una Fuente de 60 Ci y decide tomarla del contenedor con la mano y meterla al contenedor. Si el contenedor está a 10 cm. de la Fuente, ¿cuál será el nivel de Radiación en ese punto?
+
+% Calculation based on provided data
+- A un metro tendríamos: $0.55 \times 60 = 33 \, \text{R/h}$
+
+% End of the radiation safety manual text portion
