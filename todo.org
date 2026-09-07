@@ -52,6 +52,12 @@ Completion means the repository has a reviewed LaTeX source tree, a reproducible
 
 * Progress log
 
+** 2026-09-06 Organization and accident-analysis pass
+
+- Migrated source pages 043--053 into [[file:tex/chapters/12-organizacion-seguridad.tex][12-organizacion-seguridad.tex]] and [[file:tex/chapters/13-accidentes-radiologicos.tex][13-accidentes-radiologicos.tex]].
+- Reviewed the safety department structure, CNSNS organization, responsibilities of the radiological-safety officer, accident classifications, emergency actions, prevention factors, and common equipment failures.
+- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; the source's recovery procedures beginning at page 054 remain provisional.
+
 ** 2026-09-06 Regulations and emergency-criteria pass
 
 - Migrated source pages 039--042 into [[file:tex/chapters/11-normas-reglamentos.tex][11-normas-reglamentos.tex]].
@@ -153,7 +159,7 @@ Use this range map as a starting point; refine it after checking the PDF table o
 | 009-018 | Basic radiation concepts, interaction with matter, biological effects | REVIEW | Pages 009--013 and 015--018 integrated; page 014 has an ambiguous source-text continuation requiring follow-up. |
 | 019-030 | Measurement, instruments, exposure/dose calculations, protection basics | REVIEW | Pages 019--026 and 029--030 integrated; pages 027--028 retain a flagged 53.3/53.5-Ci source inconsistency. |
 | 031-042 | Industrial radiography equipment, operating instructions, regulations | DONE | Pages 031--042 integrated into chapters 10 and 11. |
-| 043-060 | Responsibilities, safety organization, accidents/procedures | TODO | Page 043 onward remains provisional; check official role names and procedure numbering. |
+| 043-060 | Responsibilities, safety organization, accidents/procedures | REVIEW | Pages 043--053 integrated; pages 054--060 still require recovery-procedure review. |
 | 061-095 | Emergency plan and emergency case procedures | TODO | Preserve classifications and step numbering exactly. |
 | 096-116 | Practices, exercises, recovery procedures, appendices | TODO | Likely appendix/practice material. |
 
@@ -212,17 +218,17 @@ For each page:
 | 040 | [[file:scratch/generated-pages/img-040.png.tex][tex]] | [[file:source/pages/img-040.png][png]] | DONE | tex/chapters/11-normas-reglamentos.tex | Administrative dose limits, storage, transport, and radiography checks reviewed. |
 | 041 | [[file:scratch/generated-pages/img-041.png.tex][tex]] | [[file:source/pages/img-041.png][png]] | DONE | tex/chapters/11-normas-reglamentos.tex | Post-exposure checks, dosimeter care, equipment maintenance, and detector care reviewed. |
 | 042 | [[file:scratch/generated-pages/img-042.png.tex][tex]] | [[file:source/pages/img-042.png][png]] | DONE | tex/chapters/11-normas-reglamentos.tex | Emergency criteria and SR-12 reporting instruction reviewed. |
-| 043 | [[file:scratch/generated-pages/img-043.png.tex][tex]] | [[file:source/pages/img-043.png][png]] | TODO |  |  |
-| 044 | [[file:scratch/generated-pages/img-044.png.tex][tex]] | [[file:source/pages/img-044.png][png]] | TODO |  |  |
-| 045 | [[file:scratch/generated-pages/img-045.png.tex][tex]] | [[file:source/pages/img-045.png][png]] | TODO |  |  |
-| 046 | [[file:scratch/generated-pages/img-046.png.tex][tex]] | [[file:source/pages/img-046.png][png]] | TODO |  |  |
-| 047 | [[file:scratch/generated-pages/img-047.png.tex][tex]] | [[file:source/pages/img-047.png][png]] | TODO |  |  |
-| 048 | [[file:scratch/generated-pages/img-048.png.tex][tex]] | [[file:source/pages/img-048.png][png]] | TODO |  |  |
-| 049 | [[file:scratch/generated-pages/img-049.png.tex][tex]] | [[file:source/pages/img-049.png][png]] | TODO |  |  |
-| 050 | [[file:scratch/generated-pages/img-050.png.tex][tex]] | [[file:source/pages/img-050.png][png]] | TODO |  |  |
-| 051 | [[file:scratch/generated-pages/img-051.png.tex][tex]] | [[file:source/pages/img-051.png][png]] | TODO |  |  |
-| 052 | [[file:scratch/generated-pages/img-052.png.tex][tex]] | [[file:source/pages/img-052.png][png]] | TODO |  |  |
-| 053 | [[file:scratch/generated-pages/img-053.png.tex][tex]] | [[file:source/pages/img-053.png][png]] | TODO |  |  |
+| 043 | [[file:scratch/generated-pages/img-043.png.tex][tex]] | [[file:source/pages/img-043.png][png]] | DONE | tex/chapters/12-organizacion-seguridad.tex | Department organization and organigram reviewed. |
+| 044 | [[file:scratch/generated-pages/img-044.png.tex][tex]] | [[file:source/pages/img-044.png][png]] | DONE | tex/chapters/12-organizacion-seguridad.tex | Radiological-safety officer responsibilities, items 1--12, reviewed. |
+| 045 | [[file:scratch/generated-pages/img-045.png.tex][tex]] | [[file:source/pages/img-045.png][png]] | DONE | tex/chapters/12-organizacion-seguridad.tex | Officer responsibilities, items 13--26, and CNSNS organization reviewed. |
+| 046 | [[file:scratch/generated-pages/img-046.png.tex][tex]] | [[file:source/pages/img-046.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Accident classification, emergency criteria, and case list reviewed. |
+| 047 | [[file:scratch/generated-pages/img-047.png.tex][tex]] | [[file:source/pages/img-047.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Emergency actions for overexposure, vehicle accidents, container loss, and loose sources reviewed. |
+| 048 | [[file:scratch/generated-pages/img-048.png.tex][tex]] | [[file:source/pages/img-048.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Accident causes and POE preparation requirements reviewed. |
+| 049 | [[file:scratch/generated-pages/img-049.png.tex][tex]] | [[file:source/pages/img-049.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Training, original equipment, and site conditions reviewed. |
+| 050 | [[file:scratch/generated-pages/img-050.png.tex][tex]] | [[file:source/pages/img-050.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Protection-equipment conditions and accident statistics reviewed. |
+| 051 | [[file:scratch/generated-pages/img-051.png.tex][tex]] | [[file:source/pages/img-051.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Human-error causes and equipment-failure categories reviewed. |
+| 052 | [[file:scratch/generated-pages/img-052.png.tex][tex]] | [[file:source/pages/img-052.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Gammagraph and radiation-meter failure modes reviewed. |
+| 053 | [[file:scratch/generated-pages/img-053.png.tex][tex]] | [[file:source/pages/img-053.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Accident-chain analysis and training conclusion reviewed. |
 | 054 | [[file:scratch/generated-pages/img-054.png.tex][tex]] | [[file:source/pages/img-054.png][png]] | TODO |  |  |
 | 055 | [[file:scratch/generated-pages/img-055.png.tex][tex]] | [[file:source/pages/img-055.png][png]] | TODO |  |  |
 | 056 | [[file:scratch/generated-pages/img-056.png.tex][tex]] | [[file:source/pages/img-056.png][png]] | TODO |  |  |
