@@ -52,6 +52,12 @@ Completion means the repository has a reviewed LaTeX source tree, a reproducible
 
 * Progress log
 
+** 2026-09-06 Regulations and emergency-criteria pass
+
+- Migrated source pages 039--042 into [[file:tex/chapters/11-normas-reglamentos.tex][11-normas-reglamentos.tex]].
+- Reviewed CNSNS requirements, administrative dose controls, storage and transport rules, radiography checks, dosimeter care, equipment maintenance, and emergency criteria.
+- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; page 043 onward remains provisional.
+
 ** 2026-09-06 Equipment and transport pass
 
 - Migrated source pages 031--038 into [[file:tex/chapters/10-equipo-transporte.tex][10-equipo-transporte.tex]].
@@ -146,8 +152,8 @@ Use this range map as a starting point; refine it after checking the PDF table o
 | 001-008 | Front matter, objectives, program, high-level topics | DONE | Pages 001 and 003--008 reviewed and integrated; page 002 is blank in the source scan. |
 | 009-018 | Basic radiation concepts, interaction with matter, biological effects | REVIEW | Pages 009--013 and 015--018 integrated; page 014 has an ambiguous source-text continuation requiring follow-up. |
 | 019-030 | Measurement, instruments, exposure/dose calculations, protection basics | REVIEW | Pages 019--026 and 029--030 integrated; pages 027--028 retain a flagged 53.3/53.5-Ci source inconsistency. |
-| 031-042 | Industrial radiography equipment, operating instructions, regulations | REVIEW | Pages 031--038 integrated; pages 039--042 still require review. |
-| 043-060 | Responsibilities, safety organization, accidents/procedures | TODO | Check official role names and procedure numbering. |
+| 031-042 | Industrial radiography equipment, operating instructions, regulations | DONE | Pages 031--042 integrated into chapters 10 and 11. |
+| 043-060 | Responsibilities, safety organization, accidents/procedures | TODO | Page 043 onward remains provisional; check official role names and procedure numbering. |
 | 061-095 | Emergency plan and emergency case procedures | TODO | Preserve classifications and step numbering exactly. |
 | 096-116 | Practices, exercises, recovery procedures, appendices | TODO | Likely appendix/practice material. |
 
@@ -202,10 +208,10 @@ For each page:
 | 036 | [[file:scratch/generated-pages/img-036.png.tex][tex]] | [[file:source/pages/img-036.png][png]] | DONE | tex/chapters/10-equipo-transporte.tex | Operating instructions reviewed through source return. |
 | 037 | [[file:scratch/generated-pages/img-037.png.tex][tex]] | [[file:source/pages/img-037.png][png]] | DONE | tex/chapters/10-equipo-transporte.tex | Operating safety, transport, and vehicle requirements reviewed. |
 | 038 | [[file:scratch/generated-pages/img-038.png.tex][tex]] | [[file:source/pages/img-038.png][png]] | DONE | tex/chapters/10-equipo-transporte.tex | Storage requirements and source inventory record reviewed. |
-| 039 | [[file:scratch/generated-pages/img-039.png.tex][tex]] | [[file:source/pages/img-039.png][png]] | TODO |  |  |
-| 040 | [[file:scratch/generated-pages/img-040.png.tex][tex]] | [[file:source/pages/img-040.png][png]] | TODO |  |  |
-| 041 | [[file:scratch/generated-pages/img-041.png.tex][tex]] | [[file:source/pages/img-041.png][png]] | TODO |  |  |
-| 042 | [[file:scratch/generated-pages/img-042.png.tex][tex]] | [[file:source/pages/img-042.png][png]] | TODO |  |  |
+| 039 | [[file:scratch/generated-pages/img-039.png.tex][tex]] | [[file:source/pages/img-039.png][png]] | DONE | tex/chapters/11-normas-reglamentos.tex | CNSNS requirements and dose/source responsibilities reviewed. |
+| 040 | [[file:scratch/generated-pages/img-040.png.tex][tex]] | [[file:source/pages/img-040.png][png]] | DONE | tex/chapters/11-normas-reglamentos.tex | Administrative dose limits, storage, transport, and radiography checks reviewed. |
+| 041 | [[file:scratch/generated-pages/img-041.png.tex][tex]] | [[file:source/pages/img-041.png][png]] | DONE | tex/chapters/11-normas-reglamentos.tex | Post-exposure checks, dosimeter care, equipment maintenance, and detector care reviewed. |
+| 042 | [[file:scratch/generated-pages/img-042.png.tex][tex]] | [[file:source/pages/img-042.png][png]] | DONE | tex/chapters/11-normas-reglamentos.tex | Emergency criteria and SR-12 reporting instruction reviewed. |
 | 043 | [[file:scratch/generated-pages/img-043.png.tex][tex]] | [[file:source/pages/img-043.png][png]] | TODO |  |  |
 | 044 | [[file:scratch/generated-pages/img-044.png.tex][tex]] | [[file:source/pages/img-044.png][png]] | TODO |  |  |
 | 045 | [[file:scratch/generated-pages/img-045.png.tex][tex]] | [[file:source/pages/img-045.png][png]] | TODO |  |  |
