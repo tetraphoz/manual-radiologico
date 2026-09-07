@@ -26,9 +26,27 @@
 
 \definecolor{myyellow}{RGB}{254,241,24}
 \definecolor{myorange}{RGB}{234,125,1}
+\definecolor{bookgreen}{RGB}{24,88,43}
 
 \restylefloat{figure}
 \allsectionsfont{\flushleft}
+\chapterfont{\color{bookgreen}}
+\sectionfont{\color{bookgreen!82!black}}
+\subsectionfont{\color{bookgreen!70!black}}
+
+% A restrained frame is applied after the title page by tex/main.tex.
+\newif\ifbookborder
+\bookborderfalse
+\AddToHook{shipout/background}{%
+  \ifbookborder
+    \begin{tikzpicture}[remember picture,overlay]
+      \draw[bookgreen!75!black,line width=0.55pt]
+        ([xshift=11mm,yshift=-11mm]current page.north west)
+        rectangle
+        ([xshift=-11mm,yshift=11mm]current page.south east);
+    \end{tikzpicture}%
+  \fi
+}
 
 % Course-program durations are deliberately emphasized in the front matter.
 \newcommand{\duration}[1]{\hfill\textbf{(#1)}}
