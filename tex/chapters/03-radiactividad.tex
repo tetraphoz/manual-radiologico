@@ -104,23 +104,26 @@ Por ejemplo, para calcular la actividad actual de una fuente con una actividad i
 Consiste en graficar la actividad contra el tiempo, tomando en cuenta que después de cada vida media la actividad original va decayendo a la mitad. Se utiliza papel semilogarítmico para graficarlo; la gráfica es exclusiva para el Ir-192.
 
 \begin{figure}[ht]
-\centering
-\begin{tikzpicture}[x=0.0105cm,y=0.72cm]
-  % Réplica vectorial de la gráfica semilogarítmica del manual fuente.
-  \draw (0,0) -- (540,0);
-  \draw (0,0) -- (0,5.4);
-  \foreach \y/\valor in {5.1/1.00,4.15/0.30,3.45/0.20,2.65/0.10,1.55/0.03,0.95/0.01}
-    {\draw[gray!55] (0,\y) -- (525,\y) node[left=3pt,black] {\valor};}
-  \foreach \x in {25,50,75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525}
-    {\draw (\x,0) -- (\x,-0.09);}
-  \foreach \x in {25,50,75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525}
-    {\node[below=2pt,rotate=90,font=\scriptsize] at (\x,0) {\x};}
-  \draw[thick] plot[smooth] coordinates
-    {(0,5.1) (50,4.55) (100,4.02) (150,3.42) (200,2.88) (250,2.35)
-     (300,1.90) (350,1.48) (400,1.15) (450,0.88) (500,0.62) (525,0.48)};
-  \node[below=22pt] at (270,0) {días};
-  \node[rotate=90] at (-42,2.7) {factor de actividad};
-\end{tikzpicture}
-\caption{Gráfica de decaimiento para Ir-192.}
-\label{fig:grafica-ir192}
+  \centering
+  \begin{tikzpicture}[x=0.012cm,y=0.72cm]
+    % Réplica vectorial de la gráfica semilogarítmica del manual fuente.
+    \draw (0,0) -- (540,0);
+    \draw (0,0) -- (0,5.4);
+    \foreach \y/\valor in {5.1/1.00,4.15/0.30,3.45/0.20,2.65/0.10,1.55/0.03,0.95/0.01} {
+      \draw[gray!55] (0,\y) -- (525,\y);
+      \node[anchor=east,xshift=-5pt,font=\scriptsize] at (0,\y) {\valor};
+    }
+    \foreach \x in {25,50,75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525}
+      {\draw (\x,0) -- (\x,-0.09);}
+    % Only alternate ticks carry labels; all ticks remain visible.
+    \foreach \x in {25,75,125,175,225,275,325,375,425,475,525}
+      {\node[below=3pt,font=\scriptsize] at (\x,0) {\x};}
+    \draw[thick] plot[smooth] coordinates
+      {(0,5.1) (50,4.55) (100,4.02) (150,3.42) (200,2.88) (250,2.35)
+       (300,1.90) (350,1.48) (400,1.15) (450,0.88) (500,0.62) (525,0.48)};
+    \node[below=24pt] at (270,0) {días};
+    \node[rotate=90] at (-48,2.7) {factor de actividad};
+  \end{tikzpicture}
+  \caption{Gráfica de decaimiento para Ir-192.}
+  \label{fig:grafica-ir192}
 \end{figure}
