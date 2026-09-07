@@ -134,8 +134,8 @@ For each page or section:
 
 * Known cleanup/issues
 
-- [[file:tex/main.tex][tex/main.tex]] now exists as the canonical build entry point. Reviewed front matter and pages 009--018 are integrated; pages 019--116 still temporarily come from raw generated fragments.
-- The generated page fragments in =scratch/generated-pages/= for pages 019--116 need human review and migration into semantic chapter files. Page 014 remains flagged for a source-text clarification.
+- [[file:tex/main.tex][tex/main.tex]] now exists as the canonical build entry point. Reviewed front matter and pages 009--023 are integrated; pages 024--116 still temporarily come from raw generated fragments.
+- The generated page fragments in =scratch/generated-pages/= for pages 024--116 need human review and migration into semantic chapter files. Page 014 remains flagged for a source-text clarification.
 - The previous malformed list/enumerate blocker around =scratch/generated-pages/img-073.png.tex= is fixed enough for strict builds, but the page still needs source-image review.
 - Some generated fragments likely contain OCR/AI mistakes, English phrases, or hallucinated headings.
 - Legacy drafts and old helper tools were archived and have now been deleted from the working tree; use Git history to restore if necessary.
