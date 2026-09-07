@@ -31,11 +31,11 @@ Important current files:
 | [[file:source/pages/][source/pages/]] | Page images =img-001.png= through =img-116.png= | Current page-image archive. |
 | [[file:scratch/ocr-input/][scratch/ocr-input/]] | OCR input queue | Currently empty. |
 | [[file:scratch/generated-pages/][scratch/generated-pages/]] | Raw generated page LaTeX fragments | =img-001.png.tex= through =img-116.png.tex=; not final source. |
-| [[file:tex/main.tex][tex/main.tex]] | Canonical LaTeX entry point | Inputs reviewed front matter, then provisional generated fragments for pages 009--116. |
+| [[file:tex/main.tex][tex/main.tex]] | Canonical LaTeX entry point | Inputs reviewed front matter and semantic chapters through page 038, then provisional generated fragments for pages 039--116. |
 | [[file:tex/preamble.tex][tex/preamble.tex]] | Shared LaTeX preamble | Packages, graphics path, colors, and document-wide settings. |
 | [[file:tex/frontmatter/objectives.tex][tex/frontmatter/objectives.tex]] | Reviewed course objective | Transcription of source page 001. |
 | [[file:tex/frontmatter/program.tex][tex/frontmatter/program.tex]] | Reviewed course program | Transcription of source pages 003--008; source page 002 is blank. |
-| [[file:tex/chapters/][tex/chapters/]] | Reviewed chapter files | Pages 009--030 are migrated here; page 014 and pages 027--028 retain flagged source-text issues. |
+| [[file:tex/chapters/][tex/chapters/]] | Reviewed chapter files | Pages 009--038 are migrated here; page 014 and pages 027--028 retain flagged source-text issues. |
 | [[file:assets/figures/][assets/figures/]] | Manual figures used by the LaTeX drafts | Root-level figure PNG/SVG assets have been moved here. |
 | [[file:scripts/ocr_pages_openai.py][scripts/ocr_pages_openai.py]] | Sanitized OCR/AI helper script | Uses project-relative paths and reads =OPENAI_API_KEY= from the environment. Generated text still requires human review. |
 | [[file:flake.nix][flake.nix]] | Nix development shell | Provides TeX Live full scheme. |
@@ -134,8 +134,8 @@ For each page or section:
 
 * Known cleanup/issues
 
-- [[file:tex/main.tex][tex/main.tex]] now exists as the canonical build entry point. Reviewed front matter and pages 009--030 are integrated; pages 031--116 still temporarily come from raw generated fragments.
-- The generated page fragments in =scratch/generated-pages/= for pages 031--116 need human review and migration into semantic chapter files. Page 014 and the 53.3/53.5-Ci discrepancy on pages 027--028 remain flagged.
+- [[file:tex/main.tex][tex/main.tex]] now exists as the canonical build entry point. Reviewed front matter and pages 009--038 are integrated; pages 039--116 still temporarily come from raw generated fragments.
+- The generated page fragments in =scratch/generated-pages/= for pages 039--116 need human review and migration into semantic chapter files. Page 014 and the 53.3/53.5-Ci discrepancy on pages 027--028 remain flagged.
 - The previous malformed list/enumerate blocker around =scratch/generated-pages/img-073.png.tex= is fixed enough for strict builds, but the page still needs source-image review.
 - Some generated fragments likely contain OCR/AI mistakes, English phrases, or hallucinated headings.
 - Legacy drafts and old helper tools were archived and have now been deleted from the working tree; use Git history to restore if necessary.
