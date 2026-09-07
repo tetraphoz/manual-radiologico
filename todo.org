@@ -52,6 +52,13 @@ Completion means the repository has a reviewed LaTeX source tree, a reproducible
 
 * Progress log
 
+** 2026-09-06 Protection-calculation pass
+
+- Migrated source pages 024--030 into [[file:tex/chapters/09-principios-proteccion.tex][09-principios-proteccion.tex]].
+- Added the inverse-square-law derivations, shielding tables, exposure-time examples, and Ir-192 calculations with labels/captions for the shielding tables.
+- Corrected the source fragment's malformed equations and the 60-Ci/10-cm dose arithmetic; flagged the source's 53.3/53.5-Ci inconsistency for review rather than silently hiding it.
+- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; remaining warnings and undefined references originate in later provisional fragments.
+
 ** 2026-09-06 Measurement and philosophy pass
 
 - Migrated source pages 019--023 into [[file:tex/chapters/07-medicion-radiacion.tex][07-medicion-radiacion.tex]] and [[file:tex/chapters/08-filosofia-proteccion.tex][08-filosofia-proteccion.tex]].
@@ -131,7 +138,7 @@ Use this range map as a starting point; refine it after checking the PDF table o
 |-------+---------------+--------+-------|
 | 001-008 | Front matter, objectives, program, high-level topics | DONE | Pages 001 and 003--008 reviewed and integrated; page 002 is blank in the source scan. |
 | 009-018 | Basic radiation concepts, interaction with matter, biological effects | REVIEW | Pages 009--013 and 015--018 integrated; page 014 has an ambiguous source-text continuation requiring follow-up. |
-| 019-030 | Measurement, instruments, exposure/dose calculations, protection basics | REVIEW | Pages 019--023 integrated; pages 024--030 still require equation and unit review. |
+| 019-030 | Measurement, instruments, exposure/dose calculations, protection basics | REVIEW | Pages 019--026 and 029--030 integrated; pages 027--028 retain a flagged 53.3/53.5-Ci source inconsistency. |
 | 031-042 | Industrial radiography equipment, operating instructions, regulations | TODO | Contains several equipment/operations figures. |
 | 043-060 | Responsibilities, safety organization, accidents/procedures | TODO | Check official role names and procedure numbering. |
 | 061-095 | Emergency plan and emergency case procedures | TODO | Preserve classifications and step numbering exactly. |
@@ -173,13 +180,13 @@ For each page:
 | 021 | [[file:scratch/generated-pages/img-021.png.tex][tex]] | [[file:source/pages/img-021.png][png]] | DONE | tex/chapters/07-medicion-radiacion.tex | Alarm monitor and dosimeter comparison reviewed. |
 | 022 | [[file:scratch/generated-pages/img-022.png.tex][tex]] | [[file:source/pages/img-022.png][png]] | DONE | tex/chapters/07-medicion-radiacion.tex; tex/chapters/08-filosofia-proteccion.tex | Geiger/scintillation monitors and start of philosophy chapter reviewed. |
 | 023 | [[file:scratch/generated-pages/img-023.png.tex][tex]] | [[file:source/pages/img-023.png][png]] | DONE | tex/chapters/08-filosofia-proteccion.tex | Zones and administrative dose limits reviewed. |
-| 024 | [[file:scratch/generated-pages/img-024.png.tex][tex]] | [[file:source/pages/img-024.png][png]] | TODO |  |  |
-| 025 | [[file:scratch/generated-pages/img-025.png.tex][tex]] | [[file:source/pages/img-025.png][png]] | TODO |  |  |
-| 026 | [[file:scratch/generated-pages/img-026.png.tex][tex]] | [[file:source/pages/img-026.png][png]] | TODO |  |  |
-| 027 | [[file:scratch/generated-pages/img-027.png.tex][tex]] | [[file:source/pages/img-027.png][png]] | TODO |  |  |
-| 028 | [[file:scratch/generated-pages/img-028.png.tex][tex]] | [[file:source/pages/img-028.png][png]] | TODO |  |  |
-| 029 | [[file:scratch/generated-pages/img-029.png.tex][tex]] | [[file:source/pages/img-029.png][png]] | TODO |  |  |
-| 030 | [[file:scratch/generated-pages/img-030.png.tex][tex]] | [[file:source/pages/img-030.png][png]] | TODO |  |  |
+| 024 | [[file:scratch/generated-pages/img-024.png.tex][tex]] | [[file:source/pages/img-024.png][png]] | DONE | tex/chapters/09-principios-proteccion.tex | Time, distance, shielding, and inverse-square example reviewed. |
+| 025 | [[file:scratch/generated-pages/img-025.png.tex][tex]] | [[file:source/pages/img-025.png][png]] | DONE | tex/chapters/09-principios-proteccion.tex | Reduction layers, shielding table, and lead-thickness calculation reviewed. |
+| 026 | [[file:scratch/generated-pages/img-026.png.tex][tex]] | [[file:source/pages/img-026.png][png]] | DONE | tex/chapters/09-principios-proteccion.tex | Exposure-time and distance examples reviewed. |
+| 027 | [[file:scratch/generated-pages/img-027.png.tex][tex]] | [[file:source/pages/img-027.png][png]] | REVIEW | tex/chapters/09-principios-proteccion.tex | Ir-192 gamma constant and 53.3-Ci question reviewed; source calculation uses 53.5 Ci on the next page. |
+| 028 | [[file:scratch/generated-pages/img-028.png.tex][tex]] | [[file:source/pages/img-028.png][png]] | REVIEW | tex/chapters/09-principios-proteccion.tex | Lead attenuation and 85-Ci distance example reviewed; 53.3/53.5-Ci discrepancy remains flagged. |
+| 029 | [[file:scratch/generated-pages/img-029.png.tex][tex]] | [[file:source/pages/img-029.png][png]] | DONE | tex/chapters/09-principios-proteccion.tex | Short-distance exposure and Ir-192 half-life example reviewed. |
+| 030 | [[file:scratch/generated-pages/img-030.png.tex][tex]] | [[file:source/pages/img-030.png][png]] | DONE | tex/chapters/09-principios-proteccion.tex | Lead attenuation table and final 2-m calculation reviewed. |
 | 031 | [[file:scratch/generated-pages/img-031.png.tex][tex]] | [[file:source/pages/img-031.png][png]] | TODO |  |  |
 | 032 | [[file:scratch/generated-pages/img-032.png.tex][tex]] | [[file:source/pages/img-032.png][png]] | TODO |  |  |
 | 033 | [[file:scratch/generated-pages/img-033.png.tex][tex]] | [[file:source/pages/img-033.png][png]] | TODO |  |  |

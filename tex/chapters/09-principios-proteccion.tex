@@ -1,0 +1,220 @@
+\chapter{Principios básicos de protección contra radiación externa}
+
+Son tres los factores más importantes que deben tomarse en cuenta a fin de que la dosis que se reciba sea mínima: tiempo, distancia y blindaje.
+
+Mantener el menor tiempo a la mayor distancia posible e interponer el mayor blindaje posible entre la fuente de radiación y la persona garantiza que la dosis será mínima.
+
+La exposición sigue la ley del cuadrado inverso; esto es, varía en razón inversa al cuadrado de la distancia. Matemáticamente se expresa como:
+\[
+X_1r_1^2=X_2r_2^2,
+\]
+donde $X_1$ es la rapidez de exposición a la distancia $r_1$ y $X_2$ es la rapidez de exposición a la distancia $r_2$.
+
+Así, si se desea calcular la rapidez de exposición a 4 metros de una cierta fuente puntual que está dando $10\ \mathrm{R/h}$ a un metro de distancia:
+\begin{align*}
+X_2 &= \left(\frac{r_1}{r_2}\right)^2X_1\\
+     &= \left(\frac{1}{4}\right)^2(10)\\
+     &= 0.0625(10)=0.625\ \mathrm{R/h}\\
+     &= 625\ \mathrm{mR/h}.
+\end{align*}
+
+Como se observa, alejarse de 1 a 4 metros reduce la rapidez de exposición de $10\ \mathrm{R/h}$ a solo $625\ \mathrm{mR/h}$.
+
+Por otra parte, el blindaje es un método muy eficiente para reducir la rapidez de exposición. Los rayos gamma se atenúan al pasar por un material y el grado de atenuación depende del material en cuestión. Por ejemplo, se requieren 6.2 pulgadas de concreto para reducir la intensidad de radiación a un décimo de su valor original cuando la fuente es Ir-192, mientras que solo se requieren 0.64 pulgadas de plomo para reducirla en la misma proporción.
+
+De esto se deduce que el plomo es mejor blindaje que el concreto.
+
+Al espesor necesario de un cierto material que reduce la intensidad de radiación a la mitad de su valor original se le llama «capa hemirreductora» y es distinta para cada radioisótopo y para cada material.
+
+También se usa el concepto «capa decirreductora» para indicar el espesor necesario para reducir la intensidad a un décimo de su valor original.
+
+El siguiente cuadro muestra los valores de las capas hemirreductoras y decirreductoras para el concreto y el plomo, y para algunos radioisótopos de interés.
+
+\begin{table}[ht]
+\centering
+\caption{Capas hemirreductoras (C.H.) y decirreductoras (C.D.).}
+\label{tab:capas-reductoras}
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+\textbf{Fuente} & \multicolumn{2}{c|}{\textbf{Iridio-192}} & \multicolumn{2}{c|}{\textbf{Cobalto-60}} & \multicolumn{2}{c|}{\textbf{Cesio-136}} \\
+\cline{2-7}
+\textbf{Material} & C.H. & C.D. & C.H. & C.D. & C.H. & C.D. \\
+\hline
+Concreto & 1.9\,in & 6.2\,in & 2.6\,in & 8.6\,in & 2.1\,in & 7.1\,in \\
+Plomo    & 0.19\,in & 0.64\,in & 0.49\,in & 1.6\,in & 0.25\,in & 0.84\,in \\
+\hline
+\end{tabular}
+\end{table}
+
+Por ejemplo, si quisiéramos saber el espesor necesario de plomo para blindar una fuente de Ir-192 y reducir su rapidez de exposición de $10\ \mathrm{R/h}$ a $2\ \mathrm{mR/h}$, procederíamos aplicando la siguiente fórmula:
+\[
+X=\frac{X_0}{2^n},
+\]
+donde $X$ es la rapidez de exposición, $X_0$ la rapidez de exposición original y $n$ el número de capas hemirreductoras que se necesitan.
+
+Como en este caso interesa conocer $n$, se despeja obteniendo:
+\[
+n=\frac{\log(X_0/X)}{\log 2}.
+\]
+Sustituyendo los valores, con $10\ \mathrm{R/h}=10{,}000\ \mathrm{mR/h}$:
+\begin{align*}
+n &= \frac{\log(10{,}000/2)}{\log 2}\\
+  &= \frac{\log(5{,}000)}{\log 2}\\
+  &\approx \frac{3.69897}{0.30103}=12.29.
+\end{align*}
+
+Es decir, se necesitan aproximadamente 12.29 capas hemirreductoras de plomo. Como cada una de ellas tiene 0.19 pulgadas, el espesor requerido será:
+\[
+\text{Espesor de plomo necesario}=12.29\times0.19=2.34\ \text{pulgadas}.
+\]
+
+\section{Cálculo del tiempo de exposición}
+
+Para calcular el tiempo que puede permanecer una persona en un campo de radiación conocido se utiliza:
+\[
+t=\frac{H}{X},
+\]
+donde $H$ es la dosis límite, $X$ la radiación en el área y $t$ el tiempo.
+
+Si se quiere calcular cuánto tiempo puede permanecer un trabajador en un área con $30\ \mathrm{mR/h}$, sin recibir más de $90\ \mathrm{mrem}$:
+\[
+t=\frac{H}{X}=\frac{90\ \mathrm{mrem}}{30\ \mathrm{mR/h}}=3\ \text{h}.
+\]
+
+\section{Cálculos a diferentes distancias}
+
+Para calcular la rapidez de exposición a otra distancia se utiliza la ley del cuadrado inverso:
+\[
+X_2=\left(\frac{d_1}{d_2}\right)^2X_1.
+\]
+
+Por ejemplo, para conocer la rapidez de exposición a 2 metros de una fuente que da $100\ \mathrm{mR/h}$ a 1 metro:
+\[
+X_2=\left(\frac{1}{2}\right)^2(100)=25\ \mathrm{mR/h}.
+\]
+
+Si se quiere calcular cuánto tiempo se puede trabajar a 5 metros de una fuente que da una rapidez de exposición de $2\ \mathrm{R/h}$ a un metro, sin recibir más de $100\ \mathrm{mrem}$, primero se calcula la rapidez de exposición:
+\begin{align*}
+X_1 &= 2\ \mathrm{R/h}, & d_1&=1\ \mathrm{m},\\
+X_2 &= \left(\frac{1}{5}\right)^2(2)=0.08\ \mathrm{R/h}=80\ \mathrm{mR/h}.
+\end{align*}
+
+El tiempo para recibir 100 mrem es:
+\[
+80\ \mathrm{mrem}\longrightarrow 1\ \mathrm{h},\qquad
+100\ \mathrm{mrem}\longrightarrow \frac{100}{80}=1.25\ \mathrm{h}=1\ \mathrm{h}\ 15\ \mathrm{min}.
+\]
+
+Si en lugar de trabajar 1 hora 15 minutos se trabaja solo 40 minutos, la dosis recibida es:
+\[
+X=\frac{80\times40}{60}=53.3\ \mathrm{mrem}.
+\]
+
+\section{Ejemplos con Ir-192}
+
+La constante gamma de desintegración o emisividad del Ir-192 es:
+\[
+0.55\ \mathrm{R/h\ a\ 1\ metro\ por\ cada\ curie}.
+\]
+
+\begin{center}
+\begin{tabular}{cc}
+\textbf{Fuente} & \textbf{Rapidez a un metro} \\
+\hline
+$2\ \mathrm{Ci}$   & $0.55\times2=1.1\ \mathrm{R/h}$ \\
+$10\ \mathrm{Ci}$  & $0.55\times10=5.5\ \mathrm{R/h}$ \\
+$35\ \mathrm{Ci}$  & $0.55\times35=19.25\ \mathrm{R/h}$ \\
+$100\ \mathrm{Ci}$ & $0.55\times100=55\ \mathrm{R/h}$ \\
+\end{tabular}
+\end{center}
+
+Se plantea calcular cuánto espesor de plomo se necesita para evitar que una fuente de Ir-192 de 53.3 Ci dé más de 100 mR/h a un metro. El original utiliza 53.5 Ci en el cálculo siguiente; se conserva esa discrepancia para revisión de la fuente:
+\[
+53.5\times0.55=29.425\ \mathrm{R/h}=29{,}425\ \mathrm{mR/h}.
+\]
+
+Si 0.2 pulgadas de plomo reducen a la mitad el nivel de radiación, se obtiene:
+\begin{table}[ht]
+\centering
+\caption{Reducción de la radiación con diferentes espesores de plomo.}
+\label{tab:plomo-reduccion}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Espesor} & \textbf{Nivel de radiación} \\
+\hline
+0      & 29{,}425 mR/h \\
+0.2\,in & 14{,}712.5 mR/h \\
+0.4\,in & 7{,}356.25 mR/h \\
+0.6\,in & 3{,}678.13 mR/h \\
+0.8\,in & 1{,}839.1 mR/h \\
+1.0\,in & 919.5 mR/h \\
+1.2\,in & 459.77 mR/h \\
+1.4\,in & 229.88 mR/h \\
+1.6\,in & 114.94 mR/h \\
+1.8\,in & 57.47 mR/h \\
+\hline
+\end{tabular}
+\end{table}
+
+Para conocer el nivel de radiación a 3 metros de una fuente de Ir-192 de 85 Ci, a un metro se tiene:
+\[
+0.55\times85=46.75\ \mathrm{R/h}.
+\]
+Aplicando la ley del cuadrado inverso:
+\[
+X_2=\left(\frac{1}{3}\right)^2(46.75)=5.19\ \mathrm{R/h}.
+\]
+
+\section{Exposición accidental a corta distancia}
+
+A un trabajador se le cae una fuente de 60 Ci y decide tomarla del contenedor con la mano y meterla al contenedor. Si el contenedor está a 10 cm de la fuente, el nivel de radiación en ese punto se calcula a partir de:
+\[
+0.55\times60=33\ \mathrm{R/h}\quad\text{a un metro}.
+\]
+
+A 10 cm, es decir, a 0.1 m:
+\[
+X_2=\left(\frac{1}{0.1}\right)^2(33)=3{,}300\ \mathrm{R/h}.
+\]
+
+Si se tarda 10 segundos en introducir la fuente, la dosis aproximada recibida en la mano sería:
+\[
+\text{Dosis}=\frac{3{,}300\ \mathrm{R}}{3{,}600\ \mathrm{s}}\times10\ \mathrm{s}=9.17\ \mathrm{R}.
+\]
+
+\section{Fuente de Ir-192 con blindaje}
+
+Una fuente de Ir-192 que fue comprada hace 148 días con 120 Ci, y está cubierta con 8 pulgadas de plomo, plantea la pregunta de qué nivel de radiación dará a 2 metros.
+
+Primero se calcula la actividad de la fuente. Ciento cuarenta y ocho días corresponden a dos vidas medias:
+\begin{center}
+\begin{tabular}{cc}
+120 Ci & 0 días \\
+60 Ci  & 74 días \\
+30 Ci  & 148 días \\
+\end{tabular}
+\end{center}
+
+Ahora se calcula el nivel de exposición a un metro, sin blindaje:
+\[
+30\times0.55=16.50\ \mathrm{R/h}.
+\]
+
+Con blindaje de plomo:
+\begin{center}
+\begin{tabular}{cc}
+\textbf{Espesor} & \textbf{Nivel de exposición} \\
+\hline
+0       & 16.5 R/h \\
+0.2\,in & 8.25 R/h \\
+0.4\,in & 4.12 R/h \\
+0.6\,in & 2.06 R/h \\
+0.8\,in & 1.03 R/h \\
+\end{tabular}
+\end{center}
+
+Finalmente, para calcular el nivel de exposición a 2 metros:
+\begin{align*}
+X_2&=\left(\frac{1}{2}\right)^2(1.03)=0.257\ \mathrm{R/h},\\
+X_2&=257\ \mathrm{mR/h}.
+\end{align*}
