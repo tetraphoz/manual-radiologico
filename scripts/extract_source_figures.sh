@@ -5,6 +5,9 @@ set -euo pipefail
 
 mkdir -p assets/figures
 
+# Rasterize the vector logo for reliable inclusion with pdfLaTeX.
+magick -background white -density 300 assets/figures/logo.svg -alpha remove assets/figures/logo-title.png
+
 crop() {
   local source=$1 geometry=$2 target=$3
   magick "$source" -crop "$geometry" +repage -threshold 82% "$target"

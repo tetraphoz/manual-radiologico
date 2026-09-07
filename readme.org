@@ -1,156 +1,43 @@
-#+title: BYN Manual LaTeX Conversion
-#+date: 2026-09-06
-#+language: en
+#+title: Curso de protección radiológica para operadores de fuentes para radiografía industrial
+#+language: es
 #+startup: overview
 
-* Goal
+* Sobre este libro
 
-Convert the BYN radiation-safety manual into a maintainable, reproducible LaTeX book project.
+Este libro presenta un curso de protección radiológica dirigido a operadores que trabajan con fuentes radiactivas en radiografía industrial. Su propósito es formar hábitos de trabajo seguros, fortalecer el criterio del operador y proporcionar procedimientos prácticos para controlar los riesgos de irradiación y contaminación.
 
-The finished project should have:
+La protección radiológica se aborda como una responsabilidad personal y colectiva: del operador, de sus compañeros de trabajo y del público que pueda encontrarse cerca de una operación radiográfica.
 
-- one canonical LaTeX entry point;
-- clean chapter/source files instead of page-by-page OCR fragments;
-- source PDF/OCR material separated from generated and scratch files;
-- figures stored in a predictable place;
-- reproducible build commands;
-- no credentials, editor cache, or LaTeX build products committed as source.
+* Contenido
 
-See [[file:todo.org][todo.org]] for the working plan and page-audit tracker.
+El curso desarrolla progresivamente los siguientes temas:
 
-* Current state
+- estructura atómica, isótopos y radiactividad;
+- radiaciones alfa, beta y gamma;
+- interacción de la radiación con la materia;
+- efectos biológicos, exposición y dosis;
+- instrumentos de medición, dosímetros y alarmas sonoras;
+- filosofía de protección radiológica y principios de tiempo, distancia y blindaje;
+- equipos para radiografía industrial, transporte y almacenamiento;
+- normas, reglamentos y responsabilidades de seguridad;
+- análisis de incidentes, accidentes y planes de emergencia;
+- procedimientos de respuesta ante fallas, pérdida de control y pérdida de fuentes;
+- prácticas de absorción, medición, localización, atenuación, operación y recuperación.
 
-This repository is mid-conversion and contains original source material, generated OCR fragments, reviewed front matter, figures, and build output in their separate working directories.
+* Organización del curso
 
-Important current files:
+El material comienza con los fundamentos físicos y biológicos necesarios para comprender los riesgos. Después presenta los instrumentos y equipos utilizados en radiografía industrial, junto con las reglas de operación y las responsabilidades del personal.
 
-| Path | Purpose | Notes |
-|------+---------+-------|
-| [[file:source/byn.pdf][source/byn.pdf]] | Original BYN manual PDF | Canonical visual source. |
-| [[file:source/byn.txt][source/byn.txt]] | Text extraction/OCR from the PDF | Useful reference, but has OCR errors. |
-| [[file:source/pages/][source/pages/]] | Page images =img-001.png= through =img-116.png= | Current page-image archive. |
-| [[file:scratch/ocr-input/][scratch/ocr-input/]] | OCR input queue | Currently empty. |
-| [[file:scratch/generated-pages/][scratch/generated-pages/]] | Raw generated page LaTeX fragments | =img-001.png.tex= through =img-116.png.tex=; not final source. |
-| [[file:tex/main.tex][tex/main.tex]] | Canonical LaTeX entry point | Inputs reviewed front matter and semantic chapters through page 116. |
-| [[file:tex/preamble.tex][tex/preamble.tex]] | Shared LaTeX preamble | Packages, graphics path, colors, and document-wide settings. |
-| [[file:tex/frontmatter/objectives.tex][tex/frontmatter/objectives.tex]] | Reviewed course objective | Transcription of source page 001. |
-| [[file:tex/frontmatter/program.tex][tex/frontmatter/program.tex]] | Reviewed course program | Transcription of source pages 003--008; source page 002 is blank. |
-| [[file:tex/chapters/][tex/chapters/]] | Reviewed chapter files | Pages 009--116 are migrated here; page 014 and pages 027--028 retain flagged source-text issues, and the 7.4.4/7.4.12 source numbering jump is noted in chapter 15. |
-| [[file:assets/figures/][assets/figures/]] | Reviewed manual drawings and tables | Emergency-procedure and gammagraphy-equipment drawings extracted from the source page scans live here; graphs are redrawn in TikZ in the reviewed chapter files. |
-| [[file:scripts/ocr_pages_openai.py][scripts/ocr_pages_openai.py]] | Sanitized OCR/AI helper script | Uses project-relative paths and reads =OPENAI_API_KEY= from the environment. Generated text still requires human review. |
-| [[file:scripts/extract_source_figures.sh][scripts/extract_source_figures.sh]] | Reproducible line-art extraction | Recreates the reviewed emergency and gammagraphy-equipment crops from =source/pages/*.png=. |
-| [[file:flake.nix][flake.nix]] | Nix development shell | Provides TeX Live full scheme. |
-| =*.aux=, =*.log=, =*.fls=, =*.fdb_latexmk=, =*.synctex.gz=, =.auctex-auto/= | LaTeX/editor generated files | Build/cache artifacts; should be ignored or removed. |
+La parte final está dedicada a la respuesta ante emergencias. Incluye clasificaciones de incidentes, organización de la respuesta, procedimientos numerados y ejercicios para practicar la toma de decisiones sin exponer innecesariamente al personal.
 
-* Quick start
+Las últimas prácticas reúnen ejercicios con detectores y dosímetros, aplicación de la ley del cuadrado inverso, atenuación de radiación gamma, manejo de equipos de gammagrafía, recuperación de fuentes y actividades posteriores a un accidente.
 
-If Nix is available:
+* Figuras y esquemas
 
-#+begin_src sh
-nix develop
-#+end_src
+El libro conserva los dibujos técnicos del manual tradicional para mostrar los componentes del equipo, las maniobras de emergencia y las posiciones de operación radiográfica. Las gráficas y tablas se presentan junto con las explicaciones de los procedimientos y cálculos a los que corresponden.
 
-Current canonical build:
+* Nota editorial
 
-#+begin_src sh
-make pdf
-# writes build/main.pdf from tex/main.tex
-#+end_src
+La terminología, las unidades, las ecuaciones y los procedimientos se han normalizado para facilitar la lectura sin cambiar el sentido técnico del curso. Cuando el material de origen presenta una lectura ambigua, una numeración incompleta o datos que no coinciden entre páginas, la incertidumbre se señala en lugar de ocultarla.
 
-Other useful targets:
-
-#+begin_src sh
-make pdf
-make clean
-make cleanall
-#+end_src
-
-The same build is available directly through =latexmk=; project options live in [[file:latexmkrc][latexmkrc]]. All LaTeX auxiliary/build products are confined to =build/=.
-
-#+begin_src sh
-latexmk tex/main.tex
-#+end_src
-
-To recreate the extracted source drawings before building:
-
-#+begin_src sh
-scripts/extract_source_figures.sh
-#+end_src
-
-* Recommended target layout
-
-Refactor toward this structure:
-
-#+begin_example
-.
-├── readme.org
-├── todo.org
-├── flake.nix
-├── flake.lock
-├── tex/
-│   ├── main.tex
-│   ├── preamble.tex
-│   ├── frontmatter/
-│   ├── chapters/
-│   └── appendices/
-├── assets/
-│   └── figures/
-├── source/
-│   ├── byn.pdf
-│   ├── byn.txt
-│   └── pages/
-├── scratch/
-│   └── generated-pages/
-├── scripts/
-└── build/
-#+end_example
-
-Suggested meanings:
-
-| Directory | Contents |
-|-----------+----------|
-| =tex/= | Final, reviewed LaTeX source. |
-| =assets/figures/= | Figures included by final LaTeX. |
-| =source/= | Original PDF, OCR text, and page images. Do not edit in place. |
-| =scratch/= | Raw AI/OCR/generated fragments and experiments. Can be regenerated. |
-| =scripts/= | Sanitized conversion/helper scripts. |
-| =build/= | Generated PDFs and LaTeX intermediate files. Do not commit. |
-
-* Conversion workflow
-
-For each page or section:
-
-1. Open the source page image/PDF and the generated fragment.
-2. Compare against =source/byn.txt= only as a secondary reference.
-3. Correct OCR errors, spelling, accents, math, units, and punctuation.
-4. Remove AI hallucinations or invented wording.
-5. Convert page-local markup into semantic LaTeX: =\chapter=, =\section=, tables, figures, lists, equations.
-6. Move reviewed content into the appropriate chapter file under =tex/chapters/=.
-7. Build with =latexmk= and fix errors/warnings introduced by the change.
-8. Mark the page/range as reviewed in [[file:todo.org][todo.org]]. Pages 001 and 003--008 are integrated under [[file:tex/frontmatter/][tex/frontmatter/]]; page 002 is blank in the source scan.
-
-* LaTeX conventions
-
-- Keep all source files UTF-8.
-- Prefer real Spanish accents over TeX accent commands unless a package requires otherwise.
-- Use one shared preamble in =tex/preamble.tex=.
-- Add =\graphicspath{{assets/figures/}}= after moving figures.
-- Distinguish source drawings from data graphs: preserve drawings as reviewed assets, but redraw graphs as LaTeX/TikZ so their labels and geometry remain editable.
-- Use semantic structure rather than formatting-only commands where possible.
-- Keep page-fragment files out of the final source tree unless they have been reviewed and integrated.
-- Build with =-halt-on-error= once the current rough draft is clean enough.
-
-* Known cleanup/issues
-
-- [[file:tex/main.tex][tex/main.tex]] now exists as the canonical build entry point. Reviewed front matter and pages 009--116 are integrated into semantic chapter files.
-- Raw generated fragments remain under =scratch/generated-pages/= only as an audit trail. Page 014, the 53.3/53.5-Ci discrepancy on pages 027--028, and the source numbering jump from 7.4.4 to 7.4.12 remain explicitly flagged for final source clarification.
-- The previous malformed list/enumerate blocker around =scratch/generated-pages/img-073.png.tex= is fixed enough for strict builds, but the page still needs source-image review.
-- Some generated fragments likely contain OCR/AI mistakes, English phrases, or hallucinated headings.
-- Legacy drafts and old helper tools were archived and have now been deleted from the working tree; use Git history to restore if necessary.
-- A =.gitignore= now covers LaTeX, editor, and build artifacts; generated intermediates have been cleaned from the working tree.
-- The OCR helper has been sanitized, but should be treated as an optional regeneration tool and not as reviewed source.
-- Source drawings for emergency procedures (pages 072--079) and gammagraphy equipment/operation (pages 105--110) are integrated in chapters 15 and 16. The Ir-192 decay, inverse-square, and attenuation graph templates are represented with TikZ rather than raster graph images.
-
-* Publication note
-
-Before publishing or distributing the converted manual, verify ownership/licensing of the original BYN PDF and any extracted figures.
+Este libro debe utilizarse junto con la capacitación impartida por personal competente, los procedimientos internos de seguridad radiológica y la normativa vigente. No sustituye la supervisión, la autorización reglamentaria ni las instrucciones del encargado de seguridad radiológica.
