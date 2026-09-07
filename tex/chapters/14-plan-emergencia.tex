@@ -1,0 +1,193 @@
+\chapter{Plan de emergencia}
+
+\section{Objetivo}
+
+Establecer criterios, políticas y procedimientos que minimicen las probabilidades de ocurrencia de accidentes, aseguren la toma de decisiones y acciones correctas en caso de ser necesario, y mitiguen sus consecuencias.
+
+\section{Alcance}
+
+Este plan de emergencia entrará en vigor tan pronto como se declare una emergencia e involucrará a todo el personal de la compañía. Todos deberán ajustarse a los lineamientos aquí especificados y acatar las disposiciones del responsable de las operaciones.
+
+\section{Organización}
+
+El organigrama que operará en caso de una emergencia se muestra en la figura~\ref{fig:organigrama-emergencia}.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    dept/.style={draw, rectangle, align=center, minimum width=4.7cm, minimum height=0.7cm},
+    role/.style={draw, rectangle, align=center, minimum width=3.1cm, minimum height=0.7cm},
+    node distance=0.65cm and 0.8cm
+  ]
+    \node (director) [dept] {DIRECTOR GENERAL};
+    \node (jefe) [dept, below=of director] {JEFE DEL DEPTO. DE SEGURIDAD\\RADIOLÓGICA};
+    \node (auxiliar) [dept, below=of jefe] {AUXILIAR DEL DEPTO. DE SEGURIDAD\\RADIOLÓGICA};
+    \node (tecnico) [role, below left=of auxiliar] {TÉCNICO\\RADIÓLOGO};
+    \node (auxrad) [role, below right=of auxiliar] {AUXILIAR DEL\\RADIÓLOGO};
+    \draw (director) -- (jefe) -- (auxiliar);
+    \draw (auxiliar) -- (tecnico);
+    \draw (auxiliar) -- (auxrad);
+  \end{tikzpicture}
+  \caption{Organigrama para la atención de una emergencia.}
+  \label{fig:organigrama-emergencia}
+\end{figure}
+
+\subsection{Roles de emergencia}
+
+El Jefe de Grupo será el funcionario de mayor jerarquía que se encuentre en el área de la emergencia. El resto de los puestos serán asignados por el Jefe de Grupo al personal que considere más adecuado.
+
+\section{Responsabilidades}
+
+\subsection{Jefe de Grupo}
+\begin{enumerate}
+  \item Declarar el inicio de una emergencia y su clasificación.
+  \item Establecer las funciones de cada uno de los participantes en las operaciones de emergencia.
+  \item Coordinar las acciones del grupo y tomar las decisiones necesarias para mitigar las consecuencias del accidente.
+  \item Dirigir personalmente las labores de búsqueda o recuperación de la fuente.
+\end{enumerate}
+
+\subsection{Responsable de comunicación}
+\begin{enumerate}
+  \item Servir de enlace entre el personal que atiende la emergencia y el personal de apoyo localizado en las oficinas generales, la CNSNS o las autoridades.
+  \item Recabar toda la información necesaria para:
+  \begin{enumerate}[label=\roman*.]
+    \item evaluar la emergencia;
+    \item efectuar cálculos dosimétricos;
+    \item reconstruir el escenario.
+  \end{enumerate}
+  \item Cooperar también en las labores de búsqueda y recuperación si así lo solicita el Jefe de Grupo, sin olvidar su responsabilidad principal.
+\end{enumerate}
+
+\subsection{Brigadas}
+\begin{enumerate}
+  \item Seguir las indicaciones del Jefe de Grupo.
+  \item Cumplir en todo momento las disposiciones del Manual de Seguridad Radiológica.
+  \item Reportarse periódicamente para informar e informarse de los avances de la emergencia ante el Jefe de Grupo.
+  \item Llevar un estricto control y vigilancia sobre las dosis, a fin de no rebasar los límites autorizados.
+\end{enumerate}
+
+\subsection{Grupo de soporte}
+
+El Grupo de Soporte estará formado por:
+\begin{enumerate}[label=\roman*.]
+  \item el director de IINDESA;
+  \item el jefe del Departamento de Seguridad Radiológica;
+  \item el auxiliar del Departamento de Seguridad Radiológica;
+  \item el encargado administrativo o de finanzas.
+\end{enumerate}
+
+La responsabilidad del Grupo de Soporte comprende:
+\begin{enumerate}
+  \item asesoría técnica específica de acuerdo con la situación que se haya presentado;
+  \item apoyo en material y equipo apropiado para emergencias;
+  \item apoyo financiero para sufragar los posibles gastos asociados con las operaciones;
+  \item soporte administrativo para utilizar de la mejor manera posible los recursos de que dispone la compañía: equipo, vehículos, oficinas, personal, etcétera.
+\end{enumerate}
+
+El Grupo de Soporte podrá asignar más personal del especificado para cumplir con su responsabilidad. De ser posible, el Grupo de Soporte, a excepción del Gerente de Finanzas, se trasladará al lugar de la emergencia a la brevedad posible.
+
+\section{Clasificación de emergencias}
+
+Las situaciones de emergencia se clasificarán de acuerdo con dos factores:
+\begin{enumerate}
+  \item la seguridad física del personal o del público;
+  \item la seguridad física de la fuente.
+\end{enumerate}
+
+Con base en estos factores se definirán las acciones de atención de la emergencia.
+
+\subsection{Criterio de seguridad física del personal o del público}
+
+La emergencia podrá ser declarada Clase I o Clase II:
+\begin{description}
+  \item[Clase I.] Situación de alto riesgo potencial, pero sin que existan lesiones físicas o sobreexposiciones al público.
+  \item[Clase II.] Situación de alto riesgo en la que exista incertidumbre o certeza de que algún trabajador o persona del público pudo haber recibido una sobreexposición o una lesión física.
+\end{description}
+
+\subsection{Criterio de seguridad física de la fuente}
+
+La emergencia podrá ser declarada Tipo A o Tipo B:
+\begin{description}
+  \item[Tipo A.] La fuente se encuentra en el equipo (contenedor o mangueras), no ha sufrido daños y es posible introducirla al blindaje sin incurrir en sobreexposiciones del personal. También se incluyen las situaciones en que la integridad del contenedor se encuentre en duda.
+  \item[Tipo B.] Se ha perdido el control de la fuente, ya sea porque se encuentra suelta fuera del equipo o porque, estando en el equipo, este fue robado. También serán Tipo B las situaciones en que exista la posibilidad de que la fuente haya resultado dañada.
+\end{description}
+
+\subsection{Clasificación de la emergencia}
+
+Para clasificar la emergencia se debe consultar la figura 2 del manual. En las situaciones en que exista duda sobre cómo clasificarla, se considerará la más grave; a medida que se acumulen datos podrá reclasificarse de manera más acertada. El orden de gravedad es:
+\begin{center}
+\begin{tabular}{c c l}
+\textbf{Clase} & \textbf{Tipo} & \textbf{Descripción} \\
+\hline
+I & A & Más leve \\
+I & B & \\
+II & A & \\
+II & B & Más grave \\
+\end{tabular}
+\end{center}
+
+\section{Clasificación de eventos}
+
+A continuación se presenta una lista de posibles eventos y su categoría. Durante una emergencia, una situación determinada puede pasar de una clasificación a otra.
+
+\begin{longtable}{p{0.74\textwidth}c}
+\textbf{Caso} & \textbf{Categoría} \\
+\hline
+Falla en el mecanismo impulsor con la fuente en la manguera; no hay personal sobreexpuesto & I-A \\
+Falla en el mecanismo impulsor con la fuente en la manguera; hay personal sobreexpuesto & II-A \\
+Daño en el candado del contenedor con la fuente en la manguera; no hay personal sobreexpuesto & I-A \\
+Daño en el candado del contenedor con la fuente en la manguera; hay personal sobreexpuesto & II-A \\
+Caída del contenedor & I-A \\
+Manguera estrangulada con fuente fuera del contenedor & I-A \\
+Inundación del almacén de material radiactivo & I-A \\
+Derrumbe de construcción o almacén de material radiactivo & I-B \\
+Incendio en almacén con material radiactivo & I-B \\
+Explosión de almacén con material radiactivo & I-B \\
+Caída de la fuente en ríos, pantanos o mar & II-B \\
+Fuente suelta en el piso, pero localizada dentro del área restringida; no hay personal sobreexpuesto & I-B \\
+Fuente suelta en el piso, pero localizada dentro del área restringida; hay personal sobreexpuesto & II-B \\
+Sobreexposición de personal o público & II-A \\
+Dosímetro saturado & II-A \\
+Accidente automovilístico & II-A \\
+Robo del contenedor & II-B \\
+Pérdida de la fuente fuera del contenedor & II-B \\
+\end{longtable}
+
+Esta lista pretende servir únicamente como guía; en todos los casos deberá ser el Jefe de Grupo quien juzgue y clasifique la emergencia según los criterios anteriores.
+
+\section{Criterios de respuesta a emergencias}
+
+Los criterios siguientes se aplicarán en orden de importancia para los tipos de eventos indicados. Dada la diversidad de las posibles situaciones, en ocasiones algunos criterios no serán aplicables y se omitirán en la práctica.
+
+\subsection{Emergencias I-A}
+\begin{enumerate}
+  \item definir el área restringida;
+  \item definir el procedimiento a seguir;
+  \item notificar al Departamento de Seguridad Radiológica.
+\end{enumerate}
+
+\subsection{Emergencias II-A}
+\begin{enumerate}
+  \item definir el área restringida;
+  \item evaluar la seguridad del personal o del público;
+  \item notificar al Departamento de Seguridad Radiológica;
+  \item definir los procedimientos.
+\end{enumerate}
+
+\subsection{Emergencias I-B}
+\begin{enumerate}
+  \item definir el área restringida;
+  \item notificar al Departamento de Seguridad Radiológica;
+  \item definir el procedimiento;
+  \item asegurar la integridad de la fuente.
+\end{enumerate}
+
+\subsection{Emergencias II-B}
+\begin{enumerate}
+  \item definir el área restringida;
+  \item evaluar la seguridad del personal o del público;
+  \item notificar al Departamento de Seguridad Radiológica;
+  \item notificar a la Comisión Nacional de Seguridad Nuclear y Salvaguardias;
+  \item definir el procedimiento;
+  \item evaluar el posible apoyo de las autoridades civiles.
+\end{enumerate}

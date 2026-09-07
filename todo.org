@@ -52,24 +52,45 @@ Completion means the repository has a reviewed LaTeX source tree, a reproducible
 
 * Progress log
 
+** 2026-09-06 Final-page migration pass
+
+- Migrated source pages 071--095 into [[file:tex/chapters/15-procedimientos-emergencia.tex][15-procedimientos-emergencia.tex]], including procedures 7.1--7.12. Corrected obvious OCR errors such as “candado”, “maneral”, “frotis”, and the source's 7.5.7 classification (II-B).
+- Migrated source pages 096--116 into [[file:tex/chapters/16-practicas.tex][16-practicas.tex]], covering practices 1--10 and the equipment/operation diagrams as maintained textual schematics.
+- Removed raw generated-page inputs from the canonical entry point; the originals remain in =scratch/generated-pages/= for audit and comparison.
+- Rebuilt from a clean state with =make cleanall && make pdf=; the canonical PDF was produced successfully.
+- The source page sequence jumps from 7.4.4 to 7.4.12 on the available scan; this is retained as an explicit review note in chapter 15.
+
+** 2026-09-06 Emergency-plan classification pass
+
+- Migrated source pages 061--070 into [[file:tex/chapters/14-plan-emergencia.tex][14-plan-emergencia.tex]].
+- Reviewed the emergency-plan objective, scope, organization, roles, responsibilities, Class I/II and Type A/B criteria, event categories, and response priorities.
+- Added semantic emergency organization and event-classification tables; rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=.
+- Detailed emergency procedures beginning at page 071 were provisional at that stage.
+
+** 2026-09-06 Source-recovery procedures pass
+
+- Integrated source pages 054--060 into [[file:tex/chapters/13-accidentes-radiologicos.tex][13-accidentes-radiologicos.tex]].
+- Reviewed source-deposition, recovery-container, stuck-source, damaged-hose, disposal, and lost-source procedures; added the recovered semicylindrical-shield figure.
+- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; page 061 begins the separate emergency plan and was provisional at that stage.
+
 ** 2026-09-06 Organization and accident-analysis pass
 
 - Migrated source pages 043--053 into [[file:tex/chapters/12-organizacion-seguridad.tex][12-organizacion-seguridad.tex]] and [[file:tex/chapters/13-accidentes-radiologicos.tex][13-accidentes-radiologicos.tex]].
 - Reviewed the safety department structure, CNSNS organization, responsibilities of the radiological-safety officer, accident classifications, emergency actions, prevention factors, and common equipment failures.
-- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; the source's recovery procedures beginning at page 054 remain provisional.
+- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; the source's recovery procedures beginning at page 054 were provisional at that stage.
 
 ** 2026-09-06 Regulations and emergency-criteria pass
 
 - Migrated source pages 039--042 into [[file:tex/chapters/11-normas-reglamentos.tex][11-normas-reglamentos.tex]].
 - Reviewed CNSNS requirements, administrative dose controls, storage and transport rules, radiography checks, dosimeter care, equipment maintenance, and emergency criteria.
-- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; page 043 onward remains provisional.
+- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; page 043 onward was provisional at that stage.
 
 ** 2026-09-06 Equipment and transport pass
 
 - Migrated source pages 031--038 into [[file:tex/chapters/10-equipo-transporte.tex][10-equipo-transporte.tex]].
 - Added reviewed figures for the shielded head, manipulator, and source duct, with captions and labels.
 - Organized operating instructions, equipment accessories, radiation-monitoring precautions, storage, and transport requirements.
-- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; pages 039 onward remain provisional.
+- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; pages 039 onward were provisional at that stage.
 
 ** 2026-09-06 Protection-calculation pass
 
@@ -82,7 +103,7 @@ Completion means the repository has a reviewed LaTeX source tree, a reproducible
 
 - Migrated source pages 019--023 into [[file:tex/chapters/07-medicion-radiacion.tex][07-medicion-radiacion.tex]] and [[file:tex/chapters/08-filosofia-proteccion.tex][08-filosofia-proteccion.tex]].
 - Reviewed dosimetry, alarm monitors, Geiger--Müller and scintillation detectors, ALARA, restricted/controlled zones, and administrative dose limits against the source images.
-- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; pages 024 onward remain provisional.
+- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; pages 024 onward were provisional at that stage.
 
 ** 2026-09-06 Chapters 1--6 pass
 
@@ -159,8 +180,8 @@ Use this range map as a starting point; refine it after checking the PDF table o
 | 009-018 | Basic radiation concepts, interaction with matter, biological effects | REVIEW | Pages 009--013 and 015--018 integrated; page 014 has an ambiguous source-text continuation requiring follow-up. |
 | 019-030 | Measurement, instruments, exposure/dose calculations, protection basics | REVIEW | Pages 019--026 and 029--030 integrated; pages 027--028 retain a flagged 53.3/53.5-Ci source inconsistency. |
 | 031-042 | Industrial radiography equipment, operating instructions, regulations | DONE | Pages 031--042 integrated into chapters 10 and 11. |
-| 043-060 | Responsibilities, safety organization, accidents/procedures | REVIEW | Pages 043--053 integrated; pages 054--060 still require recovery-procedure review. |
-| 061-095 | Emergency plan and emergency case procedures | TODO | Preserve classifications and step numbering exactly. |
+| 043-060 | Responsibilities, safety organization, accidents/procedures | DONE | Pages 043--060 integrated into chapters 12 and 13. |
+| 061-116 | Emergency plan, emergency procedures, and practices | DONE | Pages 061--116 integrated into chapters 14--16; source numbering jump 7.4.4 to 7.4.12 retained as a review note. |
 | 096-116 | Practices, exercises, recovery procedures, appendices | TODO | Likely appendix/practice material. |
 
 * Page audit tracker
@@ -229,69 +250,69 @@ For each page:
 | 051 | [[file:scratch/generated-pages/img-051.png.tex][tex]] | [[file:source/pages/img-051.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Human-error causes and equipment-failure categories reviewed. |
 | 052 | [[file:scratch/generated-pages/img-052.png.tex][tex]] | [[file:source/pages/img-052.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Gammagraph and radiation-meter failure modes reviewed. |
 | 053 | [[file:scratch/generated-pages/img-053.png.tex][tex]] | [[file:source/pages/img-053.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Accident-chain analysis and training conclusion reviewed. |
-| 054 | [[file:scratch/generated-pages/img-054.png.tex][tex]] | [[file:source/pages/img-054.png][png]] | TODO |  |  |
-| 055 | [[file:scratch/generated-pages/img-055.png.tex][tex]] | [[file:source/pages/img-055.png][png]] | TODO |  |  |
-| 056 | [[file:scratch/generated-pages/img-056.png.tex][tex]] | [[file:source/pages/img-056.png][png]] | TODO |  |  |
-| 057 | [[file:scratch/generated-pages/img-057.png.tex][tex]] | [[file:source/pages/img-057.png][png]] | TODO |  |  |
-| 058 | [[file:scratch/generated-pages/img-058.png.tex][tex]] | [[file:source/pages/img-058.png][png]] | TODO |  |  |
-| 059 | [[file:scratch/generated-pages/img-059.png.tex][tex]] | [[file:source/pages/img-059.png][png]] | TODO |  |  |
-| 060 | [[file:scratch/generated-pages/img-060.png.tex][tex]] | [[file:source/pages/img-060.png][png]] | TODO |  |  |
-| 061 | [[file:scratch/generated-pages/img-061.png.tex][tex]] | [[file:source/pages/img-061.png][png]] | TODO |  |  |
-| 062 | [[file:scratch/generated-pages/img-062.png.tex][tex]] | [[file:source/pages/img-062.png][png]] | TODO |  |  |
-| 063 | [[file:scratch/generated-pages/img-063.png.tex][tex]] | [[file:source/pages/img-063.png][png]] | TODO |  |  |
-| 064 | [[file:scratch/generated-pages/img-064.png.tex][tex]] | [[file:source/pages/img-064.png][png]] | TODO |  |  |
-| 065 | [[file:scratch/generated-pages/img-065.png.tex][tex]] | [[file:source/pages/img-065.png][png]] | TODO |  |  |
-| 066 | [[file:scratch/generated-pages/img-066.png.tex][tex]] | [[file:source/pages/img-066.png][png]] | TODO |  |  |
-| 067 | [[file:scratch/generated-pages/img-067.png.tex][tex]] | [[file:source/pages/img-067.png][png]] | TODO |  |  |
-| 068 | [[file:scratch/generated-pages/img-068.png.tex][tex]] | [[file:source/pages/img-068.png][png]] | TODO |  |  |
-| 069 | [[file:scratch/generated-pages/img-069.png.tex][tex]] | [[file:source/pages/img-069.png][png]] | TODO |  |  |
-| 070 | [[file:scratch/generated-pages/img-070.png.tex][tex]] | [[file:source/pages/img-070.png][png]] | TODO |  |  |
-| 071 | [[file:scratch/generated-pages/img-071.png.tex][tex]] | [[file:source/pages/img-071.png][png]] | TODO |  |  |
-| 072 | [[file:scratch/generated-pages/img-072.png.tex][tex]] | [[file:source/pages/img-072.png][png]] | TODO |  |  |
-| 073 | [[file:scratch/generated-pages/img-073.png.tex][tex]] | [[file:source/pages/img-073.png][png]] | TODO |  |  |
-| 074 | [[file:scratch/generated-pages/img-074.png.tex][tex]] | [[file:source/pages/img-074.png][png]] | TODO |  |  |
-| 075 | [[file:scratch/generated-pages/img-075.png.tex][tex]] | [[file:source/pages/img-075.png][png]] | TODO |  |  |
-| 076 | [[file:scratch/generated-pages/img-076.png.tex][tex]] | [[file:source/pages/img-076.png][png]] | TODO |  |  |
-| 077 | [[file:scratch/generated-pages/img-077.png.tex][tex]] | [[file:source/pages/img-077.png][png]] | TODO |  |  |
-| 078 | [[file:scratch/generated-pages/img-078.png.tex][tex]] | [[file:source/pages/img-078.png][png]] | TODO |  |  |
-| 079 | [[file:scratch/generated-pages/img-079.png.tex][tex]] | [[file:source/pages/img-079.png][png]] | TODO |  |  |
-| 080 | [[file:scratch/generated-pages/img-080.png.tex][tex]] | [[file:source/pages/img-080.png][png]] | TODO |  |  |
-| 081 | [[file:scratch/generated-pages/img-081.png.tex][tex]] | [[file:source/pages/img-081.png][png]] | TODO |  |  |
-| 082 | [[file:scratch/generated-pages/img-082.png.tex][tex]] | [[file:source/pages/img-082.png][png]] | TODO |  |  |
-| 083 | [[file:scratch/generated-pages/img-083.png.tex][tex]] | [[file:source/pages/img-083.png][png]] | TODO |  |  |
-| 084 | [[file:scratch/generated-pages/img-084.png.tex][tex]] | [[file:source/pages/img-084.png][png]] | TODO |  |  |
-| 085 | [[file:scratch/generated-pages/img-085.png.tex][tex]] | [[file:source/pages/img-085.png][png]] | TODO |  |  |
-| 086 | [[file:scratch/generated-pages/img-086.png.tex][tex]] | [[file:source/pages/img-086.png][png]] | TODO |  |  |
-| 087 | [[file:scratch/generated-pages/img-087.png.tex][tex]] | [[file:source/pages/img-087.png][png]] | TODO |  |  |
-| 088 | [[file:scratch/generated-pages/img-088.png.tex][tex]] | [[file:source/pages/img-088.png][png]] | TODO |  |  |
-| 089 | [[file:scratch/generated-pages/img-089.png.tex][tex]] | [[file:source/pages/img-089.png][png]] | TODO |  |  |
-| 090 | [[file:scratch/generated-pages/img-090.png.tex][tex]] | [[file:source/pages/img-090.png][png]] | TODO |  |  |
-| 091 | [[file:scratch/generated-pages/img-091.png.tex][tex]] | [[file:source/pages/img-091.png][png]] | TODO |  |  |
-| 092 | [[file:scratch/generated-pages/img-092.png.tex][tex]] | [[file:source/pages/img-092.png][png]] | TODO |  |  |
-| 093 | [[file:scratch/generated-pages/img-093.png.tex][tex]] | [[file:source/pages/img-093.png][png]] | TODO |  |  |
-| 094 | [[file:scratch/generated-pages/img-094.png.tex][tex]] | [[file:source/pages/img-094.png][png]] | TODO |  |  |
-| 095 | [[file:scratch/generated-pages/img-095.png.tex][tex]] | [[file:source/pages/img-095.png][png]] | TODO |  |  |
-| 096 | [[file:scratch/generated-pages/img-096.png.tex][tex]] | [[file:source/pages/img-096.png][png]] | TODO |  |  |
-| 097 | [[file:scratch/generated-pages/img-097.png.tex][tex]] | [[file:source/pages/img-097.png][png]] | TODO |  |  |
-| 098 | [[file:scratch/generated-pages/img-098.png.tex][tex]] | [[file:source/pages/img-098.png][png]] | TODO |  |  |
-| 099 | [[file:scratch/generated-pages/img-099.png.tex][tex]] | [[file:source/pages/img-099.png][png]] | TODO |  |  |
-| 100 | [[file:scratch/generated-pages/img-100.png.tex][tex]] | [[file:source/pages/img-100.png][png]] | TODO |  |  |
-| 101 | [[file:scratch/generated-pages/img-101.png.tex][tex]] | [[file:source/pages/img-101.png][png]] | TODO |  |  |
-| 102 | [[file:scratch/generated-pages/img-102.png.tex][tex]] | [[file:source/pages/img-102.png][png]] | TODO |  |  |
-| 103 | [[file:scratch/generated-pages/img-103.png.tex][tex]] | [[file:source/pages/img-103.png][png]] | TODO |  |  |
-| 104 | [[file:scratch/generated-pages/img-104.png.tex][tex]] | [[file:source/pages/img-104.png][png]] | TODO |  |  |
-| 105 | [[file:scratch/generated-pages/img-105.png.tex][tex]] | [[file:source/pages/img-105.png][png]] | TODO |  |  |
-| 106 | [[file:scratch/generated-pages/img-106.png.tex][tex]] | [[file:source/pages/img-106.png][png]] | TODO |  |  |
-| 107 | [[file:scratch/generated-pages/img-107.png.tex][tex]] | [[file:source/pages/img-107.png][png]] | TODO |  |  |
-| 108 | [[file:scratch/generated-pages/img-108.png.tex][tex]] | [[file:source/pages/img-108.png][png]] | TODO |  |  |
-| 109 | [[file:scratch/generated-pages/img-109.png.tex][tex]] | [[file:source/pages/img-109.png][png]] | TODO |  |  |
-| 110 | [[file:scratch/generated-pages/img-110.png.tex][tex]] | [[file:source/pages/img-110.png][png]] | TODO |  |  |
-| 111 | [[file:scratch/generated-pages/img-111.png.tex][tex]] | [[file:source/pages/img-111.png][png]] | TODO |  |  |
-| 112 | [[file:scratch/generated-pages/img-112.png.tex][tex]] | [[file:source/pages/img-112.png][png]] | TODO |  |  |
-| 113 | [[file:scratch/generated-pages/img-113.png.tex][tex]] | [[file:source/pages/img-113.png][png]] | TODO |  |  |
-| 114 | [[file:scratch/generated-pages/img-114.png.tex][tex]] | [[file:source/pages/img-114.png][png]] | TODO |  |  |
-| 115 | [[file:scratch/generated-pages/img-115.png.tex][tex]] | [[file:source/pages/img-115.png][png]] | TODO |  |  |
-| 116 | [[file:scratch/generated-pages/img-116.png.tex][tex]] | [[file:source/pages/img-116.png][png]] | TODO |  |  |
+| 054 | [[file:scratch/generated-pages/img-054.png.tex][tex]] | [[file:source/pages/img-054.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Source-deposition recovery procedure reviewed. |
+| 055 | [[file:scratch/generated-pages/img-055.png.tex][tex]] | [[file:source/pages/img-055.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Recovery conditions and minimum accessories reviewed. |
+| 056 | [[file:scratch/generated-pages/img-056.png.tex][tex]] | [[file:source/pages/img-056.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Recovery sequence, steps 1--11, reviewed. |
+| 057 | [[file:scratch/generated-pages/img-057.png.tex][tex]] | [[file:source/pages/img-057.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Stuck-source procedure and obstruction handling reviewed. |
+| 058 | [[file:scratch/generated-pages/img-058.png.tex][tex]] | [[file:source/pages/img-058.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Damaged-hose and source-disposal procedure reviewed. |
+| 059 | [[file:scratch/generated-pages/img-059.png.tex][tex]] | [[file:source/pages/img-059.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Lost-source emergency actions reviewed. |
+| 060 | [[file:scratch/generated-pages/img-060.png.tex][tex]] | [[file:source/pages/img-060.png][png]] | DONE | tex/chapters/13-accidentes-radiologicos.tex | Transition to the emergency plan reviewed. |
+| 061 | [[file:scratch/generated-pages/img-061.png.tex][tex]] | [[file:source/pages/img-061.png][png]] | DONE | tex/chapters/14-plan-emergencia.tex | Emergency-plan title and objective/scope opening reviewed. |
+| 062 | [[file:scratch/generated-pages/img-062.png.tex][tex]] | [[file:source/pages/img-062.png][png]] | DONE | tex/chapters/14-plan-emergencia.tex | Emergency organization, roles, and group-leader assignments reviewed. |
+| 063 | [[file:scratch/generated-pages/img-063.png.tex][tex]] | [[file:source/pages/img-063.png][png]] | DONE | tex/chapters/14-plan-emergencia.tex | Group-leader, communication, and brigade responsibilities reviewed. |
+| 064 | [[file:scratch/generated-pages/img-064.png.tex][tex]] | [[file:source/pages/img-064.png][png]] | DONE | tex/chapters/14-plan-emergencia.tex | Support group composition, responsibilities, and mobilization reviewed. |
+| 065 | [[file:scratch/generated-pages/img-065.png.tex][tex]] | [[file:source/pages/img-065.png][png]] | DONE | tex/chapters/14-plan-emergencia.tex | Class I/II and Type A/B criteria reviewed. |
+| 066 | [[file:scratch/generated-pages/img-066.png.tex][tex]] | [[file:source/pages/img-066.png][png]] | DONE | tex/chapters/14-plan-emergencia.tex | Severity order and event-classification introduction reviewed. |
+| 067 | [[file:scratch/generated-pages/img-067.png.tex][tex]] | [[file:source/pages/img-067.png][png]] | DONE | tex/chapters/14-plan-emergencia.tex | Event categories 1--7 reviewed. |
+| 068 | [[file:scratch/generated-pages/img-068.png.tex][tex]] | [[file:source/pages/img-068.png][png]] | DONE | tex/chapters/14-plan-emergencia.tex | Event categories 8--15 reviewed. |
+| 069 | [[file:scratch/generated-pages/img-069.png.tex][tex]] | [[file:source/pages/img-069.png][png]] | DONE | tex/chapters/14-plan-emergencia.tex | Classification-table guidance reviewed. |
+| 070 | [[file:scratch/generated-pages/img-070.png.tex][tex]] | [[file:source/pages/img-070.png][png]] | DONE | tex/chapters/14-plan-emergencia.tex | I-A, II-A, I-B, and II-B response priorities reviewed. |
+| 071 | [[file:scratch/generated-pages/img-071.png.tex][tex]] | [[file:source/pages/img-071.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 072 | [[file:scratch/generated-pages/img-072.png.tex][tex]] | [[file:source/pages/img-072.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 073 | [[file:scratch/generated-pages/img-073.png.tex][tex]] | [[file:source/pages/img-073.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 074 | [[file:scratch/generated-pages/img-074.png.tex][tex]] | [[file:source/pages/img-074.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 075 | [[file:scratch/generated-pages/img-075.png.tex][tex]] | [[file:source/pages/img-075.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 076 | [[file:scratch/generated-pages/img-076.png.tex][tex]] | [[file:source/pages/img-076.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 077 | [[file:scratch/generated-pages/img-077.png.tex][tex]] | [[file:source/pages/img-077.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 078 | [[file:scratch/generated-pages/img-078.png.tex][tex]] | [[file:source/pages/img-078.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 079 | [[file:scratch/generated-pages/img-079.png.tex][tex]] | [[file:source/pages/img-079.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 080 | [[file:scratch/generated-pages/img-080.png.tex][tex]] | [[file:source/pages/img-080.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 081 | [[file:scratch/generated-pages/img-081.png.tex][tex]] | [[file:source/pages/img-081.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 082 | [[file:scratch/generated-pages/img-082.png.tex][tex]] | [[file:source/pages/img-082.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 083 | [[file:scratch/generated-pages/img-083.png.tex][tex]] | [[file:source/pages/img-083.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 084 | [[file:scratch/generated-pages/img-084.png.tex][tex]] | [[file:source/pages/img-084.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 085 | [[file:scratch/generated-pages/img-085.png.tex][tex]] | [[file:source/pages/img-085.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 086 | [[file:scratch/generated-pages/img-086.png.tex][tex]] | [[file:source/pages/img-086.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 087 | [[file:scratch/generated-pages/img-087.png.tex][tex]] | [[file:source/pages/img-087.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 088 | [[file:scratch/generated-pages/img-088.png.tex][tex]] | [[file:source/pages/img-088.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 089 | [[file:scratch/generated-pages/img-089.png.tex][tex]] | [[file:source/pages/img-089.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 090 | [[file:scratch/generated-pages/img-090.png.tex][tex]] | [[file:source/pages/img-090.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 091 | [[file:scratch/generated-pages/img-091.png.tex][tex]] | [[file:source/pages/img-091.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 092 | [[file:scratch/generated-pages/img-092.png.tex][tex]] | [[file:source/pages/img-092.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 093 | [[file:scratch/generated-pages/img-093.png.tex][tex]] | [[file:source/pages/img-093.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 094 | [[file:scratch/generated-pages/img-094.png.tex][tex]] | [[file:source/pages/img-094.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 095 | [[file:scratch/generated-pages/img-095.png.tex][tex]] | [[file:source/pages/img-095.png][png]] | DONE | tex/chapters/15-procedimientos-emergencia.tex | Emergency procedure pages reviewed against source image. |
+| 096 | [[file:scratch/generated-pages/img-096.png.tex][tex]] | [[file:source/pages/img-096.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 097 | [[file:scratch/generated-pages/img-097.png.tex][tex]] | [[file:source/pages/img-097.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 098 | [[file:scratch/generated-pages/img-098.png.tex][tex]] | [[file:source/pages/img-098.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 099 | [[file:scratch/generated-pages/img-099.png.tex][tex]] | [[file:source/pages/img-099.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 100 | [[file:scratch/generated-pages/img-100.png.tex][tex]] | [[file:source/pages/img-100.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 101 | [[file:scratch/generated-pages/img-101.png.tex][tex]] | [[file:source/pages/img-101.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 102 | [[file:scratch/generated-pages/img-102.png.tex][tex]] | [[file:source/pages/img-102.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 103 | [[file:scratch/generated-pages/img-103.png.tex][tex]] | [[file:source/pages/img-103.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 104 | [[file:scratch/generated-pages/img-104.png.tex][tex]] | [[file:source/pages/img-104.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 105 | [[file:scratch/generated-pages/img-105.png.tex][tex]] | [[file:source/pages/img-105.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 106 | [[file:scratch/generated-pages/img-106.png.tex][tex]] | [[file:source/pages/img-106.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 107 | [[file:scratch/generated-pages/img-107.png.tex][tex]] | [[file:source/pages/img-107.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 108 | [[file:scratch/generated-pages/img-108.png.tex][tex]] | [[file:source/pages/img-108.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 109 | [[file:scratch/generated-pages/img-109.png.tex][tex]] | [[file:source/pages/img-109.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 110 | [[file:scratch/generated-pages/img-110.png.tex][tex]] | [[file:source/pages/img-110.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 111 | [[file:scratch/generated-pages/img-111.png.tex][tex]] | [[file:source/pages/img-111.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 112 | [[file:scratch/generated-pages/img-112.png.tex][tex]] | [[file:source/pages/img-112.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 113 | [[file:scratch/generated-pages/img-113.png.tex][tex]] | [[file:source/pages/img-113.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 114 | [[file:scratch/generated-pages/img-114.png.tex][tex]] | [[file:source/pages/img-114.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 115 | [[file:scratch/generated-pages/img-115.png.tex][tex]] | [[file:source/pages/img-115.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
+| 116 | [[file:scratch/generated-pages/img-116.png.tex][tex]] | [[file:source/pages/img-116.png][png]] | DONE | tex/chapters/16-practicas.tex | Practices and equipment material reviewed against source image. |
 * Archive
 ** DONE Improve first draft [8/8]
 
