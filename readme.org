@@ -20,7 +20,7 @@ See [[file:todo.org][todo.org]] for the working plan and page-audit tracker.
 
 * Current state
 
-This repository is mid-conversion and still contains source material, AI/OCR output, hand-edited drafts, figures, build artifacts, and editor cache files in the same directories.
+This repository is mid-conversion and contains original source material, generated OCR fragments, reviewed front matter, figures, and build output in their separate working directories.
 
 Important current files:
 
@@ -30,9 +30,12 @@ Important current files:
 | [[file:source/byn.txt][source/byn.txt]] | Text extraction/OCR from the PDF | Useful reference, but has OCR errors. |
 | [[file:source/pages/][source/pages/]] | Page images =img-001.png= through =img-116.png= | Current page-image archive. |
 | [[file:scratch/ocr-input/][scratch/ocr-input/]] | OCR input queue | Currently empty. |
-| [[file:scratch/generated-pages/][scratch/generated-pages/]] | Raw generated page LaTeX fragments | =img-001.png.tex= through =img-116.png.tex=; not final source. Also contains build clutter. |
-| [[file:tex/main.tex][tex/main.tex]] | Canonical LaTeX entry point | Currently wraps raw generated fragments until reviewed chapter files are created. |
+| [[file:scratch/generated-pages/][scratch/generated-pages/]] | Raw generated page LaTeX fragments | =img-001.png.tex= through =img-116.png.tex=; not final source. |
+| [[file:tex/main.tex][tex/main.tex]] | Canonical LaTeX entry point | Inputs reviewed front matter, then provisional generated fragments for pages 009--116. |
 | [[file:tex/preamble.tex][tex/preamble.tex]] | Shared LaTeX preamble | Packages, graphics path, colors, and document-wide settings. |
+| [[file:tex/frontmatter/objectives.tex][tex/frontmatter/objectives.tex]] | Reviewed course objective | Transcription of source page 001. |
+| [[file:tex/frontmatter/program.tex][tex/frontmatter/program.tex]] | Reviewed course program | Transcription of source pages 003--008; source page 002 is blank. |
+| [[file:tex/chapters/][tex/chapters/]] | Reviewed chapter files | Pages 009--018 are migrated here; page 014 still has a flagged source-text ambiguity. |
 | [[file:assets/figures/][assets/figures/]] | Manual figures used by the LaTeX drafts | Root-level figure PNG/SVG assets have been moved here. |
 | [[file:scripts/ocr_pages_openai.py][scripts/ocr_pages_openai.py]] | Sanitized OCR/AI helper script | Uses project-relative paths and reads =OPENAI_API_KEY= from the environment. Generated text still requires human review. |
 | [[file:flake.nix][flake.nix]] | Nix development shell | Provides TeX Live full scheme. |
@@ -117,7 +120,7 @@ For each page or section:
 5. Convert page-local markup into semantic LaTeX: =\chapter=, =\section=, tables, figures, lists, equations.
 6. Move reviewed content into the appropriate chapter file under =tex/chapters/=.
 7. Build with =latexmk= and fix errors/warnings introduced by the change.
-8. Mark the page/range as reviewed in [[file:todo.org][todo.org]].
+8. Mark the page/range as reviewed in [[file:todo.org][todo.org]]. Pages 001 and 003--008 are integrated under [[file:tex/frontmatter/][tex/frontmatter/]]; page 002 is blank in the source scan.
 
 * LaTeX conventions
 
@@ -131,8 +134,8 @@ For each page or section:
 
 * Known cleanup/issues
 
-- [[file:tex/main.tex][tex/main.tex]] now exists as the canonical build entry point, but it still temporarily inputs raw generated page fragments.
-- The generated page fragments in =scratch/generated-pages/= need human review and migration into semantic chapter files.
+- [[file:tex/main.tex][tex/main.tex]] now exists as the canonical build entry point. Reviewed front matter and pages 009--018 are integrated; pages 019--116 still temporarily come from raw generated fragments.
+- The generated page fragments in =scratch/generated-pages/= for pages 019--116 need human review and migration into semantic chapter files. Page 014 remains flagged for a source-text clarification.
 - The previous malformed list/enumerate blocker around =scratch/generated-pages/img-073.png.tex= is fixed enough for strict builds, but the page still needs source-image review.
 - Some generated fragments likely contain OCR/AI mistakes, English phrases, or hallucinated headings.
 - Legacy drafts and old helper tools were archived and have now been deleted from the working tree; use Git history to restore if necessary.

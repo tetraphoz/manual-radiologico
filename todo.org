@@ -22,14 +22,14 @@ Completion means the repository has a reviewed LaTeX source tree, a reproducible
 - [X] Conversion scripts use project-relative paths and no hard-coded credentials.
 - [ ] The final output has been proofread for Spanish accents, units, equations, tables, and figure references.
 
-* TODO LaTeX source refactor [4/12]
+* TODO LaTeX source refactor [5/12]
 
 - [X] Create =tex/main.tex= as the only final document entry point.
 - [X] Create =tex/preamble.tex= for packages, styles, colors, list settings, and macros.
 - [X] Normalize the document class and options, e.g. =book=, =oneside= if needed.
 - [X] Confirm required packages: =babel= Spanish, =graphicx=, =amsmath=, =enumitem=, =float=, =wrapfig=, =mhchem= if chemical notation is used.
 - [ ] Remove duplicate/conflicting preamble settings from old drafts.
-- [ ] Split front matter/objectives/program into =tex/frontmatter/=.
+- [X] Split front matter/objectives/program into =tex/frontmatter/=.
 - [ ] Split main content into chapter files under =tex/chapters/=.
 - [ ] Split practices/appendices into =tex/appendices/= if appropriate.
 - [ ] Normalize section hierarchy: =\chapter=, =\section=, =\subsection=, =\subsubsection=.
@@ -51,6 +51,21 @@ Completion means the repository has a reviewed LaTeX source tree, a reproducible
 - [ ] Do a final PDF visual pass against the source manual.
 
 * Progress log
+
+** 2026-09-06 Chapters 1--6 pass
+
+- Migrated source pages 009--018 from raw page fragments into semantic files under [[file:tex/chapters/][tex/chapters/]].
+- Corrected the Ir-192 decay calculation to use 118 days and $\lambda=0.693/T_{1/2}$, and converted the dose/effect material into maintainable lists and tables.
+- Added labels and captions for the Ir-192 decay table, decay graph, and clinical-effects figure.
+- Left the ambiguous continuation of the source's absorption paragraph explicitly flagged in [[file:tex/chapters/04-interaccion-materia.tex][04-interaccion-materia.tex]] rather than reproducing unverified chemical wording.
+- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; remaining layout warnings come from later provisional fragments.
+
+** 2026-09-06 Front matter review
+
+- Reviewed source pages 001, 003--008 against the page images; source page 002 is blank.
+- Integrated the reviewed objective and course-program transcription into [[file:tex/frontmatter/objectives.tex][tex/frontmatter/objectives.tex]] and [[file:tex/frontmatter/program.tex][tex/frontmatter/program.tex]].
+- Corrected the program transcription's unit continuation (mR/h and mR/semana), technical spelling (capa decirreductora), and the C.N.S.N.S. incident/accident sentence.
+- Rebuilt [[file:build/main.pdf][build/main.pdf]] successfully with =make pdf=; remaining warnings originate in provisional pages 009--116.
 
 ** 2026-09-06 Asset cleanup
 
@@ -108,8 +123,8 @@ Use this range map as a starting point; refine it after checking the PDF table o
 
 | Pages | Likely target | Status | Notes |
 |-------+---------------+--------+-------|
-| 001-008 | Front matter, objectives, program, high-level topics | TODO | First pages include course title/objectives/program. |
-| 009-018 | Basic radiation concepts, interaction with matter, biological effects | TODO | Needs exact chapter boundaries. |
+| 001-008 | Front matter, objectives, program, high-level topics | DONE | Pages 001 and 003--008 reviewed and integrated; page 002 is blank in the source scan. |
+| 009-018 | Basic radiation concepts, interaction with matter, biological effects | REVIEW | Pages 009--013 and 015--018 integrated; page 014 has an ambiguous source-text continuation requiring follow-up. |
 | 019-030 | Measurement, instruments, exposure/dose calculations, protection basics | TODO | Contains equations and examples; verify units carefully. |
 | 031-042 | Industrial radiography equipment, operating instructions, regulations | TODO | Contains several equipment/operations figures. |
 | 043-060 | Responsibilities, safety organization, accidents/procedures | TODO | Check official role names and procedure numbering. |
@@ -129,24 +144,24 @@ For each page:
 
 | Page | Fragment | Image | Status | Target | Notes |
 |------+----------+-------+--------+--------+-------|
-| 001 | [[file:scratch/generated-pages/img-001.png.tex][tex]] | [[file:source/pages/img-001.png][png]] | TODO |  |  |
-| 002 | [[file:scratch/generated-pages/img-002.png.tex][tex]] | [[file:source/pages/img-002.png][png]] | TODO |  |  |
-| 003 | [[file:scratch/generated-pages/img-003.png.tex][tex]] | [[file:source/pages/img-003.png][png]] | TODO |  |  |
-| 004 | [[file:scratch/generated-pages/img-004.png.tex][tex]] | [[file:source/pages/img-004.png][png]] | TODO |  |  |
-| 005 | [[file:scratch/generated-pages/img-005.png.tex][tex]] | [[file:source/pages/img-005.png][png]] | TODO |  |  |
-| 006 | [[file:scratch/generated-pages/img-006.png.tex][tex]] | [[file:source/pages/img-006.png][png]] | TODO |  |  |
-| 007 | [[file:scratch/generated-pages/img-007.png.tex][tex]] | [[file:source/pages/img-007.png][png]] | TODO |  |  |
-| 008 | [[file:scratch/generated-pages/img-008.png.tex][tex]] | [[file:source/pages/img-008.png][png]] | TODO |  |  |
-| 009 | [[file:scratch/generated-pages/img-009.png.tex][tex]] | [[file:source/pages/img-009.png][png]] | TODO |  |  |
-| 010 | [[file:scratch/generated-pages/img-010.png.tex][tex]] | [[file:source/pages/img-010.png][png]] | TODO |  |  |
-| 011 | [[file:scratch/generated-pages/img-011.png.tex][tex]] | [[file:source/pages/img-011.png][png]] | TODO |  |  |
-| 012 | [[file:scratch/generated-pages/img-012.png.tex][tex]] | [[file:source/pages/img-012.png][png]] | TODO |  |  |
-| 013 | [[file:scratch/generated-pages/img-013.png.tex][tex]] | [[file:source/pages/img-013.png][png]] | TODO |  |  |
-| 014 | [[file:scratch/generated-pages/img-014.png.tex][tex]] | [[file:source/pages/img-014.png][png]] | TODO |  |  |
-| 015 | [[file:scratch/generated-pages/img-015.png.tex][tex]] | [[file:source/pages/img-015.png][png]] | TODO |  |  |
-| 016 | [[file:scratch/generated-pages/img-016.png.tex][tex]] | [[file:source/pages/img-016.png][png]] | TODO |  |  |
-| 017 | [[file:scratch/generated-pages/img-017.png.tex][tex]] | [[file:source/pages/img-017.png][png]] | TODO |  |  |
-| 018 | [[file:scratch/generated-pages/img-018.png.tex][tex]] | [[file:source/pages/img-018.png][png]] | TODO |  |  |
+| 001 | [[file:scratch/generated-pages/img-001.png.tex][tex]] | [[file:source/pages/img-001.png][png]] | DONE | tex/frontmatter/objectives.tex | Objective and general objectives reviewed. |
+| 002 | [[file:scratch/generated-pages/img-002.png.tex][tex]] | [[file:source/pages/img-002.png][png]] | DONE | — | Blank source page; no content to integrate. |
+| 003 | [[file:scratch/generated-pages/img-003.png.tex][tex]] | [[file:source/pages/img-003.png][png]] | DONE | tex/frontmatter/program.tex | Program items 1--5 reviewed. |
+| 004 | [[file:scratch/generated-pages/img-004.png.tex][tex]] | [[file:source/pages/img-004.png][png]] | DONE | tex/frontmatter/program.tex | Program items 6--7.1 reviewed. |
+| 005 | [[file:scratch/generated-pages/img-005.png.tex][tex]] | [[file:source/pages/img-005.png][png]] | DONE | tex/frontmatter/program.tex | Program items 7.1--8.2 reviewed. |
+| 006 | [[file:scratch/generated-pages/img-006.png.tex][tex]] | [[file:source/pages/img-006.png][png]] | DONE | tex/frontmatter/program.tex | Program items 8.2--9.4 reviewed. |
+| 007 | [[file:scratch/generated-pages/img-007.png.tex][tex]] | [[file:source/pages/img-007.png][png]] | DONE | tex/frontmatter/program.tex | Program items 10--11.4 reviewed. |
+| 008 | [[file:scratch/generated-pages/img-008.png.tex][tex]] | [[file:source/pages/img-008.png][png]] | DONE | tex/frontmatter/program.tex | Program item 12 and final evaluation reviewed. |
+| 009 | [[file:scratch/generated-pages/img-009.png.tex][tex]] | [[file:source/pages/img-009.png][png]] | DONE | tex/chapters/01-importancia.tex; tex/chapters/02-estructura-atomica.tex | Importance and start of atomic-structure chapter reviewed. |
+| 010 | [[file:scratch/generated-pages/img-010.png.tex][tex]] | [[file:source/pages/img-010.png][png]] | DONE | tex/chapters/02-estructura-atomica.tex; tex/chapters/03-radiactividad.tex | Isotope notation and start of radioactivity chapter reviewed. |
+| 011 | [[file:scratch/generated-pages/img-011.png.tex][tex]] | [[file:source/pages/img-011.png][png]] | DONE | tex/chapters/03-radiactividad.tex | Radiation types and activity units reviewed. |
+| 012 | [[file:scratch/generated-pages/img-012.png.tex][tex]] | [[file:source/pages/img-012.png][png]] | DONE | tex/chapters/03-radiactividad.tex | Half-life, analytic method, and Ir-192 example reviewed. |
+| 013 | [[file:scratch/generated-pages/img-013.png.tex][tex]] | [[file:source/pages/img-013.png][png]] | DONE | tex/chapters/03-radiactividad.tex; tex/chapters/04-interaccion-materia.tex | Tabular/graphic methods and interaction definitions reviewed. |
+| 014 | [[file:scratch/generated-pages/img-014.png.tex][tex]] | [[file:source/pages/img-014.png][png]] | REVIEW | tex/chapters/04-interaccion-materia.tex; tex/chapters/05-efectos-biologicos.tex | Absorption paragraph contains ambiguous chemical wording in the source scan; follow-up required. |
+| 015 | [[file:scratch/generated-pages/img-015.png.tex][tex]] | [[file:source/pages/img-015.png][png]] | DONE | tex/chapters/05-efectos-biologicos.tex | Cellular effects, radiosensitivity, and somatic/hereditary effects reviewed. |
+| 016 | [[file:scratch/generated-pages/img-016.png.tex][tex]] | [[file:source/pages/img-016.png][png]] | DONE | tex/chapters/05-efectos-biologicos.tex | Deterministic effects and acute whole-body dose list reviewed. |
+| 017 | [[file:scratch/generated-pages/img-017.png.tex][tex]] | [[file:source/pages/img-017.png][png]] | DONE | tex/chapters/05-efectos-biologicos.tex | Localized effects, stochastic effects, and clinical-effects figure reviewed. |
+| 018 | [[file:scratch/generated-pages/img-018.png.tex][tex]] | [[file:source/pages/img-018.png][png]] | DONE | tex/chapters/06-riesgos-proteccion.tex | Risk classifications and external-irradiation precautions reviewed. |
 | 019 | [[file:scratch/generated-pages/img-019.png.tex][tex]] | [[file:source/pages/img-019.png][png]] | TODO |  |  |
 | 020 | [[file:scratch/generated-pages/img-020.png.tex][tex]] | [[file:source/pages/img-020.png][png]] | TODO |  |  |
 | 021 | [[file:scratch/generated-pages/img-021.png.tex][tex]] | [[file:source/pages/img-021.png][png]] | TODO |  |  |
