@@ -36,8 +36,9 @@ Important current files:
 | [[file:tex/frontmatter/objectives.tex][tex/frontmatter/objectives.tex]] | Reviewed course objective | Transcription of source page 001. |
 | [[file:tex/frontmatter/program.tex][tex/frontmatter/program.tex]] | Reviewed course program | Transcription of source pages 003--008; source page 002 is blank. |
 | [[file:tex/chapters/][tex/chapters/]] | Reviewed chapter files | Pages 009--116 are migrated here; page 014 and pages 027--028 retain flagged source-text issues, and the 7.4.4/7.4.12 source numbering jump is noted in chapter 15. |
-| [[file:assets/figures/][assets/figures/]] | Manual figures used by the LaTeX drafts | Root-level figure PNG/SVG assets have been moved here. |
+| [[file:assets/figures/][assets/figures/]] | Reviewed manual drawings and tables | Emergency-procedure and gammagraphy-equipment drawings extracted from the source page scans live here; graphs are redrawn in TikZ in the reviewed chapter files. |
 | [[file:scripts/ocr_pages_openai.py][scripts/ocr_pages_openai.py]] | Sanitized OCR/AI helper script | Uses project-relative paths and reads =OPENAI_API_KEY= from the environment. Generated text still requires human review. |
+| [[file:scripts/extract_source_figures.sh][scripts/extract_source_figures.sh]] | Reproducible line-art extraction | Recreates the reviewed emergency and gammagraphy-equipment crops from =source/pages/*.png=. |
 | [[file:flake.nix][flake.nix]] | Nix development shell | Provides TeX Live full scheme. |
 | =*.aux=, =*.log=, =*.fls=, =*.fdb_latexmk=, =*.synctex.gz=, =.auctex-auto/= | LaTeX/editor generated files | Build/cache artifacts; should be ignored or removed. |
 
@@ -68,6 +69,12 @@ The same build is available directly through =latexmk=; project options live in 
 
 #+begin_src sh
 latexmk tex/main.tex
+#+end_src
+
+To recreate the extracted source drawings before building:
+
+#+begin_src sh
+scripts/extract_source_figures.sh
 #+end_src
 
 * Recommended target layout
@@ -128,6 +135,7 @@ For each page or section:
 - Prefer real Spanish accents over TeX accent commands unless a package requires otherwise.
 - Use one shared preamble in =tex/preamble.tex=.
 - Add =\graphicspath{{assets/figures/}}= after moving figures.
+- Distinguish source drawings from data graphs: preserve drawings as reviewed assets, but redraw graphs as LaTeX/TikZ so their labels and geometry remain editable.
 - Use semantic structure rather than formatting-only commands where possible.
 - Keep page-fragment files out of the final source tree unless they have been reviewed and integrated.
 - Build with =-halt-on-error= once the current rough draft is clean enough.
@@ -141,6 +149,7 @@ For each page or section:
 - Legacy drafts and old helper tools were archived and have now been deleted from the working tree; use Git history to restore if necessary.
 - A =.gitignore= now covers LaTeX, editor, and build artifacts; generated intermediates have been cleaned from the working tree.
 - The OCR helper has been sanitized, but should be treated as an optional regeneration tool and not as reviewed source.
+- Source drawings for emergency procedures (pages 072--079) and gammagraphy equipment/operation (pages 105--110) are integrated in chapters 15 and 16. The Ir-192 decay, inverse-square, and attenuation graph templates are represented with TikZ rather than raster graph images.
 
 * Publication note
 

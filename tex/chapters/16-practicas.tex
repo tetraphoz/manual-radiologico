@@ -35,6 +35,26 @@ Calcule los promedios correspondientes a una, dos y tres láminas de cada materi
 \end{tabular}
 \end{table}
 
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[x=0.75cm,y=0.48cm]
+    \foreach \x/\nombre in {0/Madera,3/Aluminio,6/Fierro} {
+      \begin{scope}[xshift=\x cm]
+        \draw[dashed] (0,0) -- (0,3.4);
+        \draw[dashed] (0,0) -- (2.4,0);
+        \foreach \i in {1,2,3} {
+          \draw (\i*0.6,0) -- +(0,0.12);
+          \node[below=2pt,font=\scriptsize] at (\i*0.6,0) {\i};
+        }
+        \node[above=3pt,font=\scriptsize] at (1.2,3.4) {mR};
+        \node[below=16pt,font=\scriptsize] at (1.2,0) {\nombre};
+      \end{scope}
+    }
+  \end{tikzpicture}
+  \caption{Plantillas de las gráficas de rapidez de exposición para una, dos y tres placas de cada material.}
+  \label{fig:practica1-graficas}
+\end{figure}
+
 \section{Práctica 2: manejo y uso del dosímetro de lectura directa}
 
 \subsection*{Objetivo}
@@ -86,16 +106,21 @@ Aplicar la ley del cuadrado inverso a la rapidez de exposición esperada a parti
 Un detector portátil de radiación tipo Geiger--Müller y un contenedor de gammagrafía con una fuente cuya rapidez de exposición en los costados sea aproximadamente de 50 a 100\,mR/h.
 
 \begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[x=0.45cm,y=0.018cm]
-  \draw[thick] (0,0) -- (22,0) node[right] {Distancia (cm)};
-  \draw[thick] (0,0) -- (0,150) node[above] {Intensidad de radiación};
-  \draw[dashed] (0,130) -- (5,130) -- (5,0);
-  \draw[dashed] (5,70) -- (10,70) -- (10,0);
-  \draw[dashed] (10,30) -- (15,30) -- (15,0);
-  \foreach \x in {5,10,15,20} \draw (\x,0) -- (\x,-5) node[below] {\x};
-\end{tikzpicture}
-\caption{Esquema de la disminución de la intensidad al aumentar la distancia.}
+  \centering
+  \begin{tikzpicture}[x=0.42cm,y=0.72cm]
+    \draw (0,0) -- (22,0);
+    \draw (0,0) -- (0,4.5);
+    \draw[dashed] (0,4.0) -- (5,4.0) -- (5,2.0) -- (10,2.0) -- (10,0.75) -- (20,0.75);
+    \foreach \x in {5,10,15,20} {
+      \draw (\x,0) -- (\x,-0.10);
+      \node[below=2pt,font=\scriptsize] at (\x,0) {\x};
+    }
+    \node[below=18pt] at (11,0) {Distancia (cm)};
+    \node[rotate=90] at (-3.2,2.25) {Intensidad de radiación};
+    \node[above left,font=\scriptsize] at (0,4.0) {mR/h};
+  \end{tikzpicture}
+  \caption{Disminución de la intensidad de radiación al aumentar la distancia, según el esquema fuente.}
+  \label{fig:practica6-cuadrado-inverso}
 \end{figure}
 
 \section{Práctica 7: atenuación de la radiación gamma}
@@ -107,6 +132,22 @@ Determinar cómo protegerse de las radiaciones utilizando los diferentes blindaj
 Utilice un detector portátil tipo Geiger--Müller, un contenedor de gammagrafía con una fuente cuya rapidez de exposición sea aproximadamente de 50 a 100\,mR/h y tres láminas delgadas de fierro de $30\times30$\,cm.
 
 Coloque el contenedor en el suelo con un costado hacia arriba y mida la rapidez de exposición a contacto. Anote el valor. Coloque una lámina metálica sobre el costado y repita la medición; repita después con la segunda y la tercera lámina. Con los datos construya una gráfica de rapidez de exposición contra espesor de fierro.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[x=0.7cm,y=0.6cm]
+    \draw[dashed] (0,0) -- (0,4);
+    \draw[dashed] (0,0) -- (5,0);
+    \node[rotate=90] at (-0.7,2) {mR};
+    \node[below=3pt] at (2.5,0) {espesor de Fe};
+    \foreach \x in {1,2,3} {
+      \draw (\x,0) -- +(0,0.12);
+      \node[below=2pt,font=\scriptsize] at (\x,0) {\x};
+    }
+  \end{tikzpicture}
+  \caption{Plantilla de la gráfica de rapidez de exposición contra espesor de fierro.}
+  \label{fig:practica7-grafica}
+\end{figure}
 
 \section{Práctica 8: manejo de un equipo de gammagrafía}
 
@@ -126,14 +167,56 @@ Los esquemas de las páginas fuente muestran, en orden, el conector de la fuente
 \subsection{Conector de la fuente}
 El conector debe quedar correctamente alineado y asegurado antes de iniciar una operación. Verifique las uniones y el estado de sus componentes para evitar una desconexión imprevista.
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.82\textwidth]{conector_fuente.png}
+  \caption{Conector de la fuente.}
+  \label{fig:conector-fuente}
+\end{figure}
+
 \subsection{Chapa de seguridad del contenedor}
 La chapa mantiene el cierre del contenedor y evita su apertura accidental o no autorizada. Compruebe su funcionamiento durante las inspecciones del equipo.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.56\textwidth]{chapa_seguridad_contenedor.png}
+  \caption{Detalle de la chapa de seguridad del contenedor.}
+  \label{fig:chapa-seguridad}
+\end{figure}
 
 \subsection{Manipulador REEL y conector}
 El manipulador comprende el control, el cable, las mangueras y los acoples que transmiten el movimiento a la fuente. El chicote se conecta al acople del contenedor; todas las uniones deben quedar firmes antes del uso.
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.88\textwidth]{manipulador_reel.png}
+  \caption{Mecanismo del manipulador (REEL) de la fuente.}
+  \label{fig:manipulador-reel}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.88\textwidth]{detalle_conector_reel.png}
+  \caption{Detalle del conector REEL--contenedor y del acople del chicote.}
+  \label{fig:detalle-conector-reel}
+\end{figure}
+
 \subsection{Operación radiográfica}
 En la posición segura, el telemando y la cámara permanecen conectados por las mangueras guía. La fuente se desplaza desde la cámara hasta el punto focal y, terminada la exposición, se retrae nuevamente a la posición segura. El esquema fuente indica una longitud total aproximada de 14.3\,m: 8\,m hacia el telemando y 6\,m de manguera de salida, con un tramo de 2\,m señalado en esta última.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.90\textwidth]{operacion_radiografica.png}
+  \caption{Posición segura, desplazamiento hacia la exposición y retorno de la fuente.}
+  \label{fig:operacion-radiografica}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.90\textwidth]{exposicion_fuente.png}
+  \caption{Esquema de las posiciones almacenada, en tránsito y en el sitio radiográfico.}
+  \label{fig:posiciones-fuente}
+\end{figure}
 
 \begin{enumerate}
   \item \textbf{Posición almacenada:} el cable de control está retraído y la fuente permanece dentro del proyector.

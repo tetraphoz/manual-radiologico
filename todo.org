@@ -17,7 +17,7 @@ Completion means the repository has a reviewed LaTeX source tree, a reproducible
 - [ ] LaTeX source is split into reviewed chapter/appendix files.
 - [ ] All 116 source pages have been checked against the PDF/page images.
 - [ ] OCR/AI mistakes and hallucinated wording have been removed.
-- [ ] Figures are named clearly and stored under one assets directory.
+- [X] Figures are named clearly and stored under one assets directory.
 - [X] Build artifacts and editor caches are ignored or removed.
 - [X] Conversion scripts use project-relative paths and no hard-coded credentials.
 - [ ] The final output has been proofread for Spanish accents, units, equations, tables, and figure references.
@@ -35,7 +35,7 @@ Completion means the repository has a reviewed LaTeX source tree, a reproducible
 - [ ] Normalize section hierarchy: =\chapter=, =\section=, =\subsection=, =\subsubsection=.
 - [ ] Replace formatting-only headings with semantic section commands.
 - [ ] Standardize lists/tables/figures and captions.
-- [ ] Add labels/cross-references where the manual refers to practices, figures, tables, or numbered procedures.
+- [X] Add labels/cross-references where the manual refers to practices, figures, tables, or numbered procedures.
 
 * TODO Content review and proofreading [0/10]
 
@@ -51,6 +51,13 @@ Completion means the repository has a reviewed LaTeX source tree, a reproducible
 - [ ] Do a final PDF visual pass against the source manual.
 
 * Progress log
+
+** 2026-09-06 Drawing and graph integration pass
+
+- Extracted the source drawings for emergency procedures 7.1, 7.3, 7.4, and 7.9 from the page scans and integrated them into chapter 15 with captions and labels.
+- Extracted the source equipment drawings for the source connector, safety lock, REEL manipulator, REEL--container connector, and radiographic operation; integrated them into chapter 16.
+- Replaced the raster Ir-192 decay graph and the practice graph templates with editable TikZ diagrams. Raster assets are retained only for drawings and source tables, not graphs.
+- Rebuilt from a clean state with =make cleanall && make pdf=; the canonical PDF now contains 81 pages and has no unresolved references after the automatic second pass.
 
 ** 2026-09-06 Final-page migration pass
 
@@ -182,7 +189,7 @@ Use this range map as a starting point; refine it after checking the PDF table o
 | 031-042 | Industrial radiography equipment, operating instructions, regulations | DONE | Pages 031--042 integrated into chapters 10 and 11. |
 | 043-060 | Responsibilities, safety organization, accidents/procedures | DONE | Pages 043--060 integrated into chapters 12 and 13. |
 | 061-116 | Emergency plan, emergency procedures, and practices | DONE | Pages 061--116 integrated into chapters 14--16; source numbering jump 7.4.4 to 7.4.12 retained as a review note. |
-| 096-116 | Practices, exercises, recovery procedures, appendices | TODO | Likely appendix/practice material. |
+| 096-116 | Practices, exercises, recovery procedures, appendices | DONE | Practices 1--10, editable graph templates, and source equipment drawings integrated in chapter 16. |
 
 * Page audit tracker
 
